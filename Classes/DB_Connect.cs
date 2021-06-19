@@ -32,12 +32,15 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
             }
         }
         /// <summary>
-        /// проверка на возможность установки соедениния с бд 
+        /// Проверка на возможность установки соединения с БД
         /// </summary>
-        /// <param name="connectStr"></param>
+        /// <param name="DataSource">Адрес компьютера на котором храниться БД</param>
+        /// <param name="InitialCatalog">Название БД</param>
+        /// <param name="IntegratedSecurity">проверку подлинности</param>
         /// <returns></returns>
-        public  bool OpenClouseConnection(string connectStr)
+        public bool OpenClouseConnection(string DataSource = "localhost", string InitialCatalog = "BD_Zarplata", bool IntegratedSecurity = true)
         {
+            string connectStr = "Data Source="+DataSource+ "; Initial Catalog="+InitialCatalog+"; Integrated Security="+ IntegratedSecurity + ";";
             try
             {
                 SqlConnection userConnection = new SqlConnection(connectStr);
@@ -53,7 +56,11 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
                     myConnection = userConnection;
                 }
                 return true;
-            }catch(Exception ex) { MessageBox.Show("Произошла ошибка:\n" + ex.Message + "\n Проверьте корректность введенных данных");return false }
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Произошла ошибка:\n" + ex.Message + "\n Проверьте корректность введенных данных");
+                return false; 
+            }
 
         }
     }

@@ -17,12 +17,8 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
         public static void UpdateLabel(string newContent="") 
         {
             MainWindow MW = Application.Current.MainWindow as MainWindow;
-           //W.LabelStatus1.Content = newContent;
+           MW.LabelStatus1.Content = newContent;
         }
-        //public static void UpdateLabel(string newContent, Label label)
-        //{
-        //    MainWindow MW = Application.Current.MainWindow as MainWindow;
-        //    MW.label.Content = newContent;
-        //}
+        
     }       
 }

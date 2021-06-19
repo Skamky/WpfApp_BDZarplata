@@ -10,6 +10,12 @@
 
     <Grid>
         <StackPanel>
+            <Label>test</Label>
+            <TextBox></TextBox>
+            
+            <Label>test2</Label>
+            <TextBox></TextBox>
+            <Label>test3</Label>
             
             
         </StackPanel>

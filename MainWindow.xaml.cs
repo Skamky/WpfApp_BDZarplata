@@ -25,7 +25,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata
         public MainWindow()
         {
             InitializeComponent();
-            //MainFrame.Navigate(new Page_Grid());
+            MainFrame.Navigate(new Page_Login());
             Manager.MainFrame = MainFrame;
 
         }

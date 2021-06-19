@@ -17,7 +17,7 @@
             <RowDefinition/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <!--создание рамок--> 
+        <!--создание рамок-->
         <Rectangle Grid.ColumnSpan="3">
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -26,14 +26,7 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Grid.Row="2" Grid.ColumnSpan="3">
-            <Rectangle.Fill>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="White"/>
-                    <GradientStop Color="#FF6666FF" Offset="1"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
+        <Rectangle Grid.Row="2" Grid.ColumnSpan="3" Fill="#FF6666FF"/>
         <!--страницы приложения-->
         <Frame 
 			   Name="MainFrame" 
@@ -41,6 +34,9 @@
                 Grid.ColumnSpan="3"
 				NavigationUIVisibility="Hidden"
 			></Frame>
+        <!--вспомогательные информационные элементы-->
+        <Label x:Name="LabelStatus1" Grid.Row="2" Foreground="#FFFFFF66" Content="Готов." />
+        <ProgressBar x:Name="ProgressBarStatus"  Grid.Row="2" Grid.Column="2"/>
 
     </Grid>
 </Window>
