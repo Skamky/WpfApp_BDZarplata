@@ -9,28 +9,52 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
 {
     class DB_Connect
     {
-        public static string connectionString = "Data Source=SKAMKYPC; Initial Catalog=BD_Zarplata; Integrated Security=true;";
+        public static string connectionString = "Data Source=localhost; Initial Catalog=BD_Zarplata; Integrated Security=true;";
         public static SqlConnection myConnection = new SqlConnection(connectionString);
         /// <summary>
         /// создание соединения с БД
         /// </summary>
-        public static void openConnection()
+        public static void OpenConnection()
         {
             
             if (myConnection.State == System.Data.ConnectionState.Closed)
             {
                 myConnection.Open();
-             //   MessageBox.Show("Подключение прошло успешно!","Информация", MessageBoxButton.OK,MessageBoxImage.Information);
+             
             }
                 
         }
-        public static void closeConnection()
+        public static void CloseConnection()
         {
             if (myConnection.State == System.Data.ConnectionState.Open)
             {
                 myConnection.Close();
-               // MessageBox.Show("Отключен От Базы данных", "Информация", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+        }
+        /// <summary>
+        /// проверка на возможность установки соедениния с бд 
+        /// </summary>
+        /// <param name="connectStr"></param>
+        /// <returns></returns>
+        public  bool OpenClouseConnection(string connectStr)
+        {
+            try
+            {
+                SqlConnection userConnection = new SqlConnection(connectStr);
+
+                if (userConnection.State == System.Data.ConnectionState.Closed)
+                {
+                    userConnection.Open();
+
+                }
+                if (userConnection.State == System.Data.ConnectionState.Open)
+                {
+                    userConnection.Close();
+                    myConnection = userConnection;
+                }
+                return true;
+            }catch(Exception ex) { MessageBox.Show("Произошла ошибка:\n" + ex.Message + "\n Проверьте корректность введенных данных");return false }
+
         }
     }
 }

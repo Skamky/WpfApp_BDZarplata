@@ -17,8 +17,23 @@
             <RowDefinition/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <Rectangle ></Rectangle>
-        <Rectangle></Rectangle>
+        <!--создание рамок--> 
+        <Rectangle Grid.ColumnSpan="3">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="#FF6666FF"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Grid.Row="2" Grid.ColumnSpan="3">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White"/>
+                    <GradientStop Color="#FF6666FF" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
         <!--страницы приложения-->
         <Frame 
 			   Name="MainFrame" 

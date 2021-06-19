@@ -18,12 +18,12 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
         /// <param name="sql">SQL команда для выполнения (типа SELECT)</param>
         public static void loadDataGrid(DataGrid dataGrid, string sql)
         {
-            DB_Connect.openConnection(); 
+            DB_Connect.OpenConnection(); 
             SqlDataAdapter mysqldataAdapter = new SqlDataAdapter(sql, DB_Connect.connectionString); 
             DataTable dataTable = new DataTable();
             mysqldataAdapter.Fill(dataTable); 
             dataGrid.ItemsSource = dataTable.DefaultView; 
-            DB_Connect.closeConnection();
+            DB_Connect.CloseConnection();
         }
 
         /// <summary>
@@ -34,12 +34,12 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
         /// <param name="numberCol">Номер столбца из выборки (начиная с 0) который присваивается списку  </param>
         public static void LoadDataComboBox(ComboBox comboBox, string sql, int numberCol)
         {
-            DB_Connect.openConnection(); 
+            DB_Connect.OpenConnection(); 
             SqlCommand command = new SqlCommand(sql, DB_Connect.myConnection); 
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             { comboBox.Items.Add(reader.GetValue(numberCol).ToString()); }
-            DB_Connect.closeConnection();
+            DB_Connect.CloseConnection();
         }
         /// <summary>
         ///  Загрузка данных из БД в список
@@ -49,12 +49,12 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
         /// <param name="numberCol">Номер столбца из выборки (начиная с 0) который присваивается списку  </param>
         public static void LoadDataListBox(ListBox listbox, string sql, int numberCol)
         {
-            DB_Connect.openConnection();
+            DB_Connect.OpenConnection();
             SqlCommand command = new SqlCommand(sql, DB_Connect.myConnection);
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             { listbox.Items.Add(reader.GetValue(numberCol).ToString()); }
-            DB_Connect.closeConnection();
+            DB_Connect.CloseConnection();
         }
         /// <summary>
         /// Выполнение SQL Запроса к бд
@@ -65,16 +65,16 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
         {
             Manager.UpdateLabel("Выполняю запрос...");
             object sqlValue = null;
-            DB_Connect.openConnection();
+            DB_Connect.OpenConnection();
             //try
            // {
                 SqlCommand command = new SqlCommand(sql, DB_Connect.myConnection);
                 sqlValue = command.ExecuteScalar();
                 Manager.UpdateLabel("Запрос успешно выполнен!");
-            DB_Connect.closeConnection();
+            DB_Connect.CloseConnection();
             //}
            // catch (Exception ex) { MessageBox.Show("Произошла Ошибка \n" + ex.Message+ "\n SQL Запрос: \n"+ sql, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error); }
-            //finally { DB_Connect.closeConnection(); }
+            //finally { DB_Connect.CloseConnection(); }
             return sqlValue;
         }
         /// <summary>
@@ -87,7 +87,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
         {
             try { 
             Manager.UpdateLabel("Выполняю запрос...");
-            DB_Connect.openConnection();
+            DB_Connect.OpenConnection();
             SqlCommand command = new SqlCommand(SQL_Comand, DB_Connect.myConnection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
@@ -97,7 +97,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
             return temp;
             }
             catch (Exception ex) { MessageBox.Show("Произошла Ошибка \n" + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error); return ""; }
-            finally { DB_Connect.closeConnection(); }
+            finally { DB_Connect.CloseConnection(); }
         }
         /// <summary>
         /// Выполнение запроса к БД
@@ -109,7 +109,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
         {
             try { 
             Manager.UpdateLabel("Выполняю запрос...");
-            DB_Connect.openConnection();
+            DB_Connect.OpenConnection();
             SqlCommand command = new SqlCommand(SQL_Comand, DB_Connect.myConnection);
             SqlDataReader reader = command.ExecuteReader();
             reader.Read();
@@ -119,7 +119,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
             return temp;
             }
             catch (Exception ex) { MessageBox.Show("Произошла Ошибка \n" + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);return ""; }
-            finally { DB_Connect.closeConnection(); }
+            finally { DB_Connect.CloseConnection(); }
         }
         /// <summary>
         /// Выполнение запроса к БД 
@@ -133,7 +133,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
             try
             {
                 Manager.UpdateLabel("Выполняю запрос...");
-                DB_Connect.openConnection();
+                DB_Connect.OpenConnection();
                 SqlCommand command = new SqlCommand(SQL_Comand, DB_Connect.myConnection);
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();
@@ -153,7 +153,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
                 results = new[] { "" };
                 return results;
             }
-            finally { DB_Connect.closeConnection(); }
+            finally { DB_Connect.CloseConnection(); }
         }
         /// <summary>
         /// Выполнение запроса к БД 
@@ -167,7 +167,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
             try
             {
                 Manager.UpdateLabel("Выполняю запрос...");
-                DB_Connect.openConnection();
+                DB_Connect.OpenConnection();
                 SqlCommand command = new SqlCommand(SQL_Comand, DB_Connect.myConnection);
                 SqlDataReader reader = command.ExecuteReader();
                 reader.Read();
@@ -187,7 +187,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
                 results =new[]{""};
                 return results;
             }
-            finally { DB_Connect.closeConnection(); }
+            finally { DB_Connect.CloseConnection(); }
         }
 
         /// <summary>
@@ -203,7 +203,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
 
             try { 
                 Manager.UpdateLabel("Выполняю запрос...");
-                DB_Connect.openConnection();
+                DB_Connect.OpenConnection();
                 SqlCommand command = new SqlCommand(SQL_Comand, DB_Connect.myConnection);
                 SqlDataReader reader = command.ExecuteReader();
                 int s = 0;
@@ -225,7 +225,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
                 MessageBox.Show("Произошла Ошибка при чтении таблицы \n" + ex.Message, "Ошибка\n", MessageBoxButton.OK, MessageBoxImage.Error);
               
             }
-            finally { DB_Connect.closeConnection(); }
+            finally { DB_Connect.CloseConnection(); }
 
         }
 
@@ -234,7 +234,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
         public static bool queryData(string sql) 
         {
             Manager.UpdateLabel("Выполняю запрос...");
-            DB_Connect.openConnection();
+            DB_Connect.OpenConnection();
             try
             {
                 SqlCommand command = new SqlCommand(sql, DB_Connect.myConnection);
@@ -243,7 +243,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
                 
             }
             catch(Exception ex) { MessageBox.Show("Произошла Ошибка \n"+ ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error); return false; }
-            finally { DB_Connect.closeConnection(); }
+            finally { DB_Connect.CloseConnection(); }
             return true;
 
         }

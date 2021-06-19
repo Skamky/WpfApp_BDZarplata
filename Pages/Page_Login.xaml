@@ -9,6 +9,10 @@
       Title="Page_Login">
 
     <Grid>
+        <StackPanel>
+            
+            
+        </StackPanel>
         
     </Grid>
 </Page>
