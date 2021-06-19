@@ -24,5 +24,38 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
         {
             InitializeComponent();
         }
+
+        private void BtnLogin_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CB_IPPC_Localhost_Click(object sender, RoutedEventArgs e)
+        {
+            if (CB_IPPC_Localhost.IsChecked == true)
+            {
+                TB_IpPc.Text = "localhost";
+                TB_IpPc.IsEnabled = false;
+            }
+            else
+            {
+                TB_IpPc.Text = "";
+                TB_IpPc.IsEnabled = true;
+            }
+        }
+
+        private void CB_BD_NAmeDef_Click(object sender, RoutedEventArgs e)
+        {
+            if (CB_BD_NAmeDef.IsChecked==true)
+            {
+                TB_DBName.Text = "BD_Zarplata";
+                TB_DBName.IsEnabled = false;
+            }
+            else
+            {
+                TB_DBName.Text = "";
+                TB_DBName.IsEnabled = true;
+            }
+        }
     }
 }
