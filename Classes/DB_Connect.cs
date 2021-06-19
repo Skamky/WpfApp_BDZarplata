@@ -9,7 +9,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
 {
     class DB_Connect
     {
-        public static string connectionString = "Data Source=SKAMKYPC; Initial Catalog=BD_Zarplata; Integrated Security=true;"; 
+        public static string connectionString = "Data Source=SKAMKYPC; Initial Catalog=BD_Zarplata; Integrated Security=true;";
         public static SqlConnection myConnection = new SqlConnection(connectionString);
         /// <summary>
         /// создание соединения с БД

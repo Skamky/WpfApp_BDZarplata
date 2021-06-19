@@ -247,22 +247,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
             return true;
 
         }
-        //public static void LoadDataForm(string sql, TextBlock TypeOfMaterial)
-        //{
-        //    // MainWindow MW = Application.Current.MainWindow as MainWindow;
-
-        //    DB_Connect.openConnection();
-        //    SqlCommand command = new SqlCommand(sql, DB_Connect.myConnection);
-        //    SqlDataReader reader = command.ExecuteReader();
-        //    while (reader.Read())
-        //    {
-
-        //        listbox.Items.Add(reader.GetValue(numberCol).ToString());
-
-        //    }
-        //    DB_Connect.closeConnection();
-        //}
-
+        
 
 
     }
