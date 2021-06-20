@@ -31,6 +31,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             if (Classes.DB_Connect.OpenClouseConnection(TB_IpPc.Text, TB_DBName.Text))
             {
                 Classes.Manager.UpdateLabel("Подключение прошло успешно");
+                Classes.Manager.MainFrame.Navigate(new Page_Grid());
             }
             else Classes.Manager.UpdateLabel("Ошибка");
         }
