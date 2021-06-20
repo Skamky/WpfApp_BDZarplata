@@ -7,7 +7,7 @@ using System.Windows;
 using System.IO;
 namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
 {
-    class DB_Connect
+   public class DB_Connect
     {
         public static string connectionString = "Data Source=localhost; Initial Catalog=BD_Zarplata; Integrated Security=true;";
         public static SqlConnection myConnection = new SqlConnection(connectionString);
@@ -38,7 +38,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
         /// <param name="InitialCatalog">Название БД</param>
         /// <param name="IntegratedSecurity">проверку подлинности</param>
         /// <returns></returns>
-        public bool OpenClouseConnection(string DataSource = "localhost", string InitialCatalog = "BD_Zarplata", bool IntegratedSecurity = true)
+        public static bool OpenClouseConnection(string DataSource = "localhost", string InitialCatalog = "BD_Zarplata", bool IntegratedSecurity = true)
         {
             string connectStr = "Data Source="+DataSource+ "; Initial Catalog="+InitialCatalog+"; Integrated Security="+ IntegratedSecurity + ";";
             try
@@ -58,7 +58,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
                 return true;
             }catch(Exception ex)
             {
-                MessageBox.Show("Произошла ошибка:\n" + ex.Message + "\n Проверьте корректность введенных данных");
+                MessageBox.Show("Произошла ошибка:\n" + ex.Message + "\n Проверьте корректность введенных данных\n"+ connectStr);
                 return false; 
             }
 

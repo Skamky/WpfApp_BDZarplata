@@ -27,7 +27,12 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
 
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
-
+            Classes.Manager.UpdateLabel("Попытка подключения К БД");
+            if (Classes.DB_Connect.OpenClouseConnection(TB_IpPc.Text, TB_DBName.Text))
+            {
+                Classes.Manager.UpdateLabel("Подключение прошло успешно");
+            }
+            else Classes.Manager.UpdateLabel("Ошибка");
         }
 
         private void CB_IPPC_Localhost_Click(object sender, RoutedEventArgs e)
