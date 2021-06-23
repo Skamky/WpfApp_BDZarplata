@@ -9,7 +9,9 @@
       Title="Page_Grid">
 
     <Grid>
-        <DataGrid x:Name="DataGridMain" HorizontalAlignment="Left"  VerticalAlignment="Top" />
+        <Grid.ColumnDefinitions> </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions></Grid.RowDefinitions>
+        <DataGrid x:Name="DataGridMain" HorizontalAlignment="Center"  VerticalAlignment="Top" />
 
     </Grid>
 </Page>
