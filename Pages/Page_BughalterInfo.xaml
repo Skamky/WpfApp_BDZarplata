@@ -9,6 +9,7 @@
       Title="Page_BughalterInfo">
 
     <Grid>
+        <Label></Label>
         <DataGrid x:Name="SotridnikOklad"/>
     </Grid>
 </Page>

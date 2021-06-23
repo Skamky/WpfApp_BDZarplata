@@ -32,26 +32,27 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             {
                 Classes.Manager.UpdateLabel("Подключение прошло успешно");
 
-               object DostupLvl=
+               object DostupLvl =
                 Classes.DB.queryScalar("SELECT  t2.AccessLvl " +
                     "FROM[bd_zarplta].[sotrudnik] " +
                     "t1 LEFT JOIN bd_zarplta.doljnost t2 ON t1.idDoljnost = t2.idDoljnost " +
                     "where t1.idSotrudnik=" + TB_idSotrudnik.Text).ToString();
                 switch (DostupLvl)
                 {
-                    case 0:
+                    case "0":
                         MessageBox.Show("В Доступе Отказано! Обратитесь в Бухгалтерию для получения выписки");
                         break;
-                    case 1:
+                    case "1":
                         Classes.Manager.MainFrame.Navigate(new Page_BughalterInfo());
                         break;
-                    case 2:
+                    case "2":
                         Classes.Manager.MainFrame.Navigate(new Pages.Page_SotrudnikMainInfo());
                         break;
-                    case 3:
+                    case "3":
                         Classes.Manager.MainFrame.Navigate(new Page_SelectPage());
                         break;
                     default:
+                        MessageBox.Show("Неизвестный уровень доступа " + DostupLvl);
                         break;
                 }
                 
