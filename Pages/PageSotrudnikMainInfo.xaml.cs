@@ -23,7 +23,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
         public PageSotrudnikMainInfo()
         {
             InitializeComponent();
-            Classes.DB.queryScalar("SELECT  full_name , t2.title, family_status, num_zd_kids,num_invalid_kids, opeka, SpecStatus, StajFROM[bd_zarplta].[sotrudnik] t1 LEFT JOIN bd_zarplta.doljnost t2 ON t1.idDoljnost = t2.idDoljnost");
+            Classes.DB.queryScalar("SELECT  full_name , t2.title, family_status, num_zd_kids,num_invalid_kids, opeka, SpecStatus, Staj FROM[bd_zarplta].[sotrudnik] t1 LEFT JOIN bd_zarplta.doljnost t2 ON t1.idDoljnost = t2.idDoljnost");
         }
     }
 }
