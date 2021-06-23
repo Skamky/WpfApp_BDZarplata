@@ -10,6 +10,6 @@
 
     <Grid>
         <DataGrid x:Name="DG_Sotrud"/>
-
+        <Button x:Name="BtnAdd" Click="BtnAdd_Click"/>
     </Grid>
 </Page>
