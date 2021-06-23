@@ -1,4 +1,4 @@
-﻿<Page x:Class="WpfApp_КурсоваяРабота2021_BDZarplata.Pages.PageSotrudnikMainInfo"
+﻿<Page x:Class="WpfApp_КурсоваяРабота2021_BDZarplata.Pages.Page_SotrudnikMainInfo"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
