@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Sql;
+using System.Data.SqlClient;
 
 namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
 {
@@ -11,20 +12,20 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
     class Procedure
     {
         static string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=usersdb;Integrated Security=True";
-        static void Main(string[] args)
-        {
-            Console.Write("Введите имя пользователя:");
-            string name = Console.ReadLine();
+        //static void Main(string[] args)
+        //{
+        //    Console.Write("Введите имя пользователя:");
+        //    string name = Console.ReadLine();
 
-            Console.Write("Введите возраст пользователя:");
-            int age = Int32.Parse(Console.ReadLine());
+        //    Console.Write("Введите возраст пользователя:");
+        //    int age = Int32.Parse(Console.ReadLine());
 
-            AddUser(name, age);
-            Console.WriteLine();
-            GetUsers();
+        //    AddUser(name, age);
+        //    Console.WriteLine();
+        //    GetUsers();
 
-            Console.Read();
-        }
+        //    Console.Read();
+        //}
         // добавление пользователя
         private static void AddUser(string name, int age)
         {
