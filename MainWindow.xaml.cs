@@ -30,5 +30,10 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata
             Manager.MainFrame = MainFrame;
 
         }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.GoBack();
+        }
     }
 }
