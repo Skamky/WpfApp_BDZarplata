@@ -12,23 +12,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp_КурсоваяРабота2021_BDZarplata.Pages;
-using WpfApp_КурсоваяРабота2021_BDZarplata.Classes;
 
-namespace WpfApp_КурсоваяРабота2021_BDZarplata
+namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для Page_SelectPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Page_SelectPage : Page
     {
-        public MainWindow()
+        public Page_SelectPage()
         {
             InitializeComponent();
-            //MainFrame.Navigate(new Page_Login());
-            MainFrame.Navigate(new Page_SelectPage());
-            Manager.MainFrame = MainFrame;
-
         }
+
+        private void BTN_BughalterInfo_Click(object sender, RoutedEventArgs e)
+        {
+            Classes.Manager.MainFrame.Navigate(new Page_BughalterInfo());
+        }
+
     }
 }

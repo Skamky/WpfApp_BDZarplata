@@ -23,7 +23,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
         public Page_BughalterInfo()
         {
             InitializeComponent();
-            Classes.DB.loadDataGrid(SotridnikOklad,"SELECT      [title]     ,[Oklad], [Travmat] FROM [BD_Zarplata].[bd_zarplta].[doljnost]");
+            Classes.DB.loadDataGrid(DG_SotridnikOklad,"SELECT      [title]     ,[Oklad], [Travmat] FROM [BD_Zarplata].[bd_zarplta].[doljnost]");
         }
     }
 }

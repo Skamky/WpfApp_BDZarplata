@@ -9,7 +9,19 @@
       Title="Page_BughalterInfo">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="267*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="266*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+
+        </Grid.RowDefinitions>
+
         <Label></Label>
-        <DataGrid x:Name="SotridnikOklad"/>
+        <DataGrid x:Name="DG_SotridnikOklad"/>
+        <GridSplitter Grid.Column="1"></GridSplitter>
+        <DataGrid x:Name="DG_Sotrudnik" Grid.Column="2"/>
     </Grid>
 </Page>
