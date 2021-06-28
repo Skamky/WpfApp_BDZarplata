@@ -36,7 +36,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             TB_Kid1.Text = Classes.DB.queryScalar("SELECT kid1 FROM [BD_Zarplata].[bd_zarplta].[h]").ToString();
             TB_Kid3.Text = Classes.DB.queryScalar("SELECT Kid3 FROM [BD_Zarplata].[bd_zarplta].[h]").ToString();
             TB_KidInvalid.Text = Classes.DB.queryScalar("SELECT invalid FROM [BD_Zarplata].[bd_zarplta].[h]").ToString();
-            TB_KidInvalid_opek.Text = Classes.DB.queryScalar("SELECT invalid_o FROM [BD_Zarplata].[bd_zarplta].[h]").ToString();
+            TB_KidInvalid_opek.Text = Classes.DB.queryScalar("SELECT [invlid_o] FROM [BD_Zarplata].[bd_zarplta].[h]").ToString();
             Manager.MainProgressBar.Value = 4;
             TB_Mrot.Text = Classes.DB.queryScalar("SELECT MROT FROM [BD_Zarplata].[bd_zarplta].[h]").ToString();
             TB_NDFL.Text = Classes.DB.queryScalar("SELECT NDFL FROM [BD_Zarplata].[bd_zarplta].[h]").ToString();
