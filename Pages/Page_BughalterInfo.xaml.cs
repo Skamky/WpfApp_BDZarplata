@@ -24,6 +24,10 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
         {
             InitializeComponent();
             Classes.DB.loadDataGrid(DG_SotridnikOklad,"SELECT      [title]     ,[Oklad], [Travmat] FROM [BD_Zarplata].[bd_zarplta].[doljnost]");
+            TB_FCC.Text = Classes.DB.queryScalar("SELECT FCC FROM [BD_Zarplata].[bd_zarplta].[h]").ToString();
+        
         }
+
+        
     }
 }

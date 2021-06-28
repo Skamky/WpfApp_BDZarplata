@@ -75,7 +75,12 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
             //}
            // catch (Exception ex) { MessageBox.Show("Произошла Ошибка \n" + ex.Message+ "\n SQL Запрос: \n"+ sql, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error); }
             //finally { DB_Connect.CloseConnection(); }
-            return sqlValue;
+            if (sqlValue!=null) return sqlValue;
+            else 
+            {
+                sqlValue = "null";
+                return sqlValue;
+            }
         }
         /// <summary>
         /// Выполнение запроса к БД
@@ -93,8 +98,13 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
             reader.Read();
             string temp = reader[Column].ToString();
             
-            Manager.UpdateLabel("Запрос успешно выполнен!");
-            return temp;
+            Manager.UpdateLabel("Запрос успешно выполнен!");    
+                if (temp != null) return temp;
+                else
+                {
+                    temp = "null";
+                    return temp;
+                }
             }
             catch (Exception ex) { MessageBox.Show("Произошла Ошибка \n" + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error); return ""; }
             finally { DB_Connect.CloseConnection(); }
@@ -116,7 +126,12 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
             string temp = reader[Column].ToString();
           
             Manager.UpdateLabel("Запрос успешно выполнен!");
-            return temp;
+                if (temp != null) return temp;
+                else
+                {
+                    temp = "null";
+                    return temp;
+                }
             }
             catch (Exception ex) { MessageBox.Show("Произошла Ошибка \n" + ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);return ""; }
             finally { DB_Connect.CloseConnection(); }

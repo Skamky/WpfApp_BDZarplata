@@ -24,11 +24,11 @@
             <Button x:Name="Btn_Redactir" Cursor="Hand" Content="Изменить"/>
             <Button x:Name="Btn_delete" Cursor="Hand" Content="Удалить"/>
         </Menu>
-        <TabControl Grid.Row="1" >
+        <TabControl Grid.Row="1" x:Name="TabC_Main">
             <TabItem Header="Оклады сотрудников">
                 <DataGrid x:Name="DG_SotridnikOklad" />
             </TabItem>
-            <TabItem Header="Льготы и налоги">
+            <TabItem Header="Льготы и налоги" x:Name="TabI_LN">
                 <Grid >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="62"></ColumnDefinition>
@@ -55,7 +55,7 @@
                         <TextBox x:Name="TB_Kid3" Height="20" Margin="0,6,0,0"></TextBox>
                         <TextBox x:Name="TB_KidInvalid" Height="20" Margin="0,6,0,0"></TextBox>
                         <TextBox x:Name="TB_KidInvalid_opek" Height="20" Margin="0,6,0,0"></TextBox>
-                        <TextBox x:Name="TB_Mrot" Height="20" Margin="0,6,0,0"></TextBox>
+                        <TextBox x:Name="TB_Mrot" Height="20" Margin="0,6,0,0" ></TextBox>
                     </StackPanel>
                 </Grid>
             </TabItem >
