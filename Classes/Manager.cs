@@ -9,6 +9,8 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
     class Manager
     {
         public static Frame MainFrame { get; set; }
+        public static Label LabelStatus { get; set; }
+        public static ProgressBar MainProgressBar { get; set; }
         //метод по изменению контента в объектах
         /// <summary>
         /// отладочный вывод сообщений в отдельной Label
@@ -16,8 +18,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
         /// <param name="newContent">новое сообщение для вывода</param>
         public static void UpdateLabel(string newContent="") 
         {
-            MainWindow MW = Application.Current.MainWindow as MainWindow;
-           MW.LabelStatus1.Content = newContent;
+            LabelStatus.Content = newContent;
         }
         
     }       

@@ -28,6 +28,8 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata
             //MainFrame.Navigate(new Page_Login());
             MainFrame.Navigate(new Page_SelectPage());
             Manager.MainFrame = MainFrame;
+            Manager.LabelStatus = LabelStatus1;
+            Manager.MainProgressBar = ProgressBarStatus;
 
         }
 

@@ -36,7 +36,7 @@
 			></Frame>
         <!--вспомогательные информационные элементы-->
         <Label x:Name="LabelStatus1" Grid.Row="2" Foreground="#FFFFFF66" Content="Готов." />
-        <ProgressBar x:Name="ProgressBarStatus"  Grid.Row="2" Grid.Column="0" Margin="0.4,34.6,-0.4,0"/>
+        <ProgressBar x:Name="ProgressBarStatus"  Grid.Row="2" Grid.Column="0" Margin="0.4,34.6,-0.4,0" Visibility="Hidden"/>
         <Button x:Name="BtnBack" Grid.Row="2" Grid.Column="2" Click="BtnBack_Click"> Назад</Button>
     </Grid>
 </Window>
