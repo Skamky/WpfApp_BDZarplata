@@ -65,7 +65,6 @@
                         <DataGridTextColumn Binding="{Binding Path=Y}" Header="Год"/>
                         <DataGridTextColumn Binding="{Binding Path=Z}" Header="Значение"/>
                     </DataGrid.Columns>
-                    
                 </DataGrid>
             </TabItem>
         </TabControl>
