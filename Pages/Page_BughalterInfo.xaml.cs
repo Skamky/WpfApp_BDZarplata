@@ -37,13 +37,34 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             TB_Kid3.Text = Classes.DB.queryScalar("SELECT Kid3 FROM [BD_Zarplata].[bd_zarplta].[h]").ToString();
             TB_KidInvalid.Text = Classes.DB.queryScalar("SELECT invalid FROM [BD_Zarplata].[bd_zarplta].[h]").ToString();
             TB_KidInvalid_opek.Text = Classes.DB.queryScalar("SELECT [invlid_o] FROM [BD_Zarplata].[bd_zarplta].[h]").ToString();
-            Manager.MainProgressBar.Value = 4;
+            Manager.MainProgressBar.Value = 5;
             TB_Mrot.Text = Classes.DB.queryScalar("SELECT MROT FROM [BD_Zarplata].[bd_zarplta].[h]").ToString();
             TB_NDFL.Text = Classes.DB.queryScalar("SELECT NDFL FROM [BD_Zarplata].[bd_zarplta].[h]").ToString();
             TB_PFR.Text = Classes.DB.queryScalar("SELECT PFR FROM [BD_Zarplata].[bd_zarplta].[h]").ToString();
+            Manager.MainProgressBar.Value = 5;
+            DB.loadDataGrid(DG_Base, "SELECT *  FROM [BD_Zarplata].[bd_zarplta].[base]");
+            
+            
             Manager.MainProgressBar.Visibility = Visibility.Hidden;
+
         }
 
-        
+       
+        private void DG_SotridnikOklad_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            //отправка значений измененый ячейки в бд
+        }
+
+        private void DG_SotridnikOklad_CurrentCellChanged(object sender, EventArgs e)
+        {
+
+          }
+        string bufercell = "";
+        private void DG_SotridnikOklad_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            //здесь должно быть копирование в переменную выбраной ячейки
+            bufercell = DG.returnCell(DG_SotridnikOklad);
+            
+        }
     }
 }

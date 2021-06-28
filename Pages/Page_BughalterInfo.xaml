@@ -26,7 +26,7 @@
         </Menu>
         <TabControl Grid.Row="1" x:Name="TabC_Main">
             <TabItem Header="Оклады сотрудников">
-                <DataGrid x:Name="DG_SotridnikOklad" />
+                <DataGrid x:Name="DG_SotridnikOklad" CellEditEnding="DG_SotridnikOklad_CellEditEnding" MouseUp="DG_SotridnikOklad_MouseUp"    />
             </TabItem>
             <TabItem Header="Льготы и налоги" x:Name="TabI_LN">
                 <Grid >

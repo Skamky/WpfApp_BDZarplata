@@ -65,6 +65,7 @@
     </Compile>
     <Compile Include="Classes\DB.cs" />
     <Compile Include="Classes\DB_Connect.cs" />
+    <Compile Include="Classes\DG.cs" />
     <Compile Include="Classes\Manager.cs" />
     <Compile Include="Classes\Procedure.cs" />
     <Compile Include="MainWindow.xaml.cs">
