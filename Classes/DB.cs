@@ -66,15 +66,15 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
             Manager.UpdateLabel("Выполняю запрос...");
             object sqlValue = null;
             DB_Connect.OpenConnection();
-            //try
-           // {
+            try
+            {
                 SqlCommand command = new SqlCommand(sql, DB_Connect.myConnection);
                 sqlValue = command.ExecuteScalar();
                 Manager.UpdateLabel("Запрос успешно выполнен!");
-            DB_Connect.CloseConnection();
-            //}
-           // catch (Exception ex) { MessageBox.Show("Произошла Ошибка \n" + ex.Message+ "\n SQL Запрос: \n"+ sql, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error); }
-            //finally { DB_Connect.CloseConnection(); }
+                
+            }
+            catch (Exception ex) { MessageBox.Show("Произошла Ошибка \n" + ex.Message + "\n SQL Запрос: \n" + sql, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error); }
+            finally { DB_Connect.CloseConnection(); }
             if (sqlValue!=null) return sqlValue;
             else 
             {
@@ -83,7 +83,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
             }
         }
         /// <summary>
-        /// Выполнение запроса к БД
+        /// Выполнение запроса к БД C возвратом указанного столбца
         /// </summary>
         /// <param name="SQL_Comand">SQL команда для выполнения</param>
         /// <param name="Column"> Номер возвращаемого столбца</param>

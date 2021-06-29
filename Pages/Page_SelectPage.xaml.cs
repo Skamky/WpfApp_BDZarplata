@@ -30,5 +30,9 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             Classes.Manager.MainFrame.Navigate(new Page_BughalterInfo());
         }
 
+        private void BTN_Page_SotrudnikMainInfo_Click(object sender, RoutedEventArgs e)
+        {
+            Classes.Manager.MainFrame.Navigate(new Pages.Page_SotrudnikMainInfo());
+        }
     }
 }

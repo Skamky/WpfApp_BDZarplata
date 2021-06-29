@@ -5,91 +5,32 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Sql;
 using System.Data.SqlClient;
+using System.Windows;
 
 namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
 {
-    // НЕ ИСПОЛЬЗОВАТЬ ДАННЫЙ КЛАСС
     class Procedure
     {
-        static string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=usersdb;Integrated Security=True";
-        //static void Main(string[] args)
-        //{
-        //    Console.Write("Введите имя пользователя:");
-        //    string name = Console.ReadLine();
-
-        //    Console.Write("Введите возраст пользователя:");
-        //    int age = Int32.Parse(Console.ReadLine());
-
-        //    AddUser(name, age);
-        //    Console.WriteLine();
-        //    GetUsers();
-
-        //    Console.Read();
-        //}
-        // добавление пользователя
-        private static void AddUser(string name, int age)
+        /// <summary>
+        /// Обновление указанной таблицы в бд
+        /// </summary>
+        /// <param name="NameTable">Имя таблицы</param>
+        /// <param name="ColumnsName">Массив имен столбцов</param>
+        /// <param name="ColumnsData">Массив значений этих столбцов</param>
+        /// <param name="Where">Условие отбора</param>
+        public static void UpdateTable(string NameTable, string[] ColumnsName,string[] ColumnsData,string Where)
         {
-            // название процедуры
-            string sqlExpression = "sp_InsertUser";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            string sqlComand = $"UPDATE {NameTable} SET {ColumnsName[0]} = {ColumnsData[0]}";
+            if (ColumnsData.Length == ColumnsName.Length)
             {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection);
-                // указываем, что команда представляет хранимую процедуру
-                command.CommandType = System.Data.CommandType.StoredProcedure;
-                // параметр для ввода имени
-                SqlParameter nameParam = new SqlParameter
+                for (int i = 1; i < ColumnsData.Length; i++)
                 {
-                    ParameterName = "@name",
-                    Value = name
-                };
-                // добавляем параметр
-                command.Parameters.Add(nameParam);
-                // параметр для ввода возраста
-                SqlParameter ageParam = new SqlParameter
-                {
-                    ParameterName = "@age",
-                    Value = age
-                };
-                command.Parameters.Add(ageParam);
-
-                var result = command.ExecuteScalar();
-                // если нам не надо возвращать id
-                //var result = command.ExecuteNonQuery();
-
-                Console.WriteLine("Id добавленного объекта: {0}", result);
-            }
-        }
-
-        // вывод всех пользователей
-        private static void GetUsers()
-        {
-            // название процедуры
-            string sqlExpression = "sp_GetUsers";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand(sqlExpression, connection);
-                // указываем, что команда представляет хранимую процедуру
-                command.CommandType = System.Data.CommandType.StoredProcedure;
-                var reader = command.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    Console.WriteLine("{0}\t{1}\t{2}", reader.GetName(0), reader.GetName(1), reader.GetName(2));
-
-                    while (reader.Read())
-                    {
-                        int id = reader.GetInt32(0);
-                        string name = reader.GetString(1);
-                        int age = reader.GetInt32(2);
-                        Console.WriteLine("{0} \t{1} \t{2}", id, name, age);
-                    }
+                    sqlComand += $", {ColumnsName[i]} = {ColumnsData[i]}";
                 }
-                reader.Close();
+                sqlComand += Where;
+                Classes.DB.queryScalar(sqlComand);
             }
+            else MessageBox.Show("err UpdateTable \n Количество столбцов не совпадает с количеством значений");
         }
     }
 }

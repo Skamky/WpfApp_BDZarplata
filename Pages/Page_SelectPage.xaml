@@ -12,7 +12,7 @@
         <StackPanel>
             <Button x:Name="BTN_PageLogin" Content="PageLogin"/>
             <Button x:Name="BTN_BughalterInfo" Content="Page_BughalterInfo" Click="BTN_BughalterInfo_Click"/>
-            <Button Content="Button"/>
+            <Button x:Name="BTN_Page_SotrudnikMainInfo" Content="Page_SotrudnikMainInfo" Click="BTN_Page_SotrudnikMainInfo_Click"/>
             <Button Content="Button"/>
 
 

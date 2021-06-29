@@ -21,6 +21,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
     /// </summary>
     public partial class Page_BughalterInfo : Page
     {
+        bool Select0Items = true;
         public Page_BughalterInfo()
         {
             Manager.MainProgressBar.Visibility = Visibility.Visible;
@@ -28,7 +29,17 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
 
             InitializeComponent();
             Manager.MainProgressBar.Value = 1;
-            DB.loadDataGrid(DG_SotridnikOklad,"SELECT      [title]     ,[Oklad], [Travmat] FROM [BD_Zarplata].[bd_zarplta].[doljnost]");
+            DB.loadDataGrid(DG_SotridnikOklad, "SELECT  [idDoljnost],    [title]     ,[Oklad], [Travmat] FROM [BD_Zarplata].[bd_zarplta].[doljnost]");
+
+            TabI_LN_Initialized(null, null);
+            DB.loadDataGrid(DG_Base, "SELECT *  FROM [BD_Zarplata].[bd_zarplta].[base]");
+            
+            
+            Manager.MainProgressBar.Visibility = Visibility.Hidden;
+
+        }
+        private void TabI_LN_Initialized(object sender, EventArgs e)
+        {
             Manager.MainProgressBar.Value = 2;
             TB_FCC.Text = Classes.DB.queryScalar("SELECT FCC FROM [BD_Zarplata].[bd_zarplta].[h]").ToString();
             TB_FOMC.Text = Classes.DB.queryScalar("SELECT FOMC FROM [BD_Zarplata].[bd_zarplta].[h]").ToString();
@@ -42,29 +53,160 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             TB_NDFL.Text = Classes.DB.queryScalar("SELECT NDFL FROM [BD_Zarplata].[bd_zarplta].[h]").ToString();
             TB_PFR.Text = Classes.DB.queryScalar("SELECT PFR FROM [BD_Zarplata].[bd_zarplta].[h]").ToString();
             Manager.MainProgressBar.Value = 5;
-            DB.loadDataGrid(DG_Base, "SELECT *  FROM [BD_Zarplata].[bd_zarplta].[base]");
-            
-            
-            Manager.MainProgressBar.Visibility = Visibility.Hidden;
+        }
+        /// <summary>
+        /// сохранение измененных полей таблицы БД
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Btn_Save_Click(object sender, RoutedEventArgs e)
+        {
+            switch (TabC_Main.SelectedIndex)
+            {
+                case 0:
 
+                    break;
+                case 1:
+                    if (MessageBoxResult.OK == MessageBox.Show("Сохранить Изменения? \n Ок -сохранить \n Отмена - Отменить все изменения", "Запрос на сохранение", MessageBoxButton.OKCancel))
+                    {
+                        string[] columnName = { "[NDFL]", "[PFR]", "[FCC]", "[FOMC]", "[kid1]", "[kid3]", "[invalid]", "[invlid_o]", "[MROT]" };
+                        string[] MasData = { TB_NDFL.Text.Replace(',', '.'), TB_PFR.Text.Replace(',', '.'), TB_FCC.Text.Replace(',', '.'), TB_FOMC.Text.Replace(',', '.'), TB_Kid1.Text, TB_Kid3.Text, TB_KidInvalid.Text, TB_KidInvalid_opek.Text, TB_Mrot.Text };
+                        Classes.Procedure.UpdateTable("[BD_Zarplata].[bd_zarplta].[h]", columnName, MasData, "");
+                    }
+                    TabI_LN_Initialized(null, null);
+                    break;
+                case 2:
+                    MessageBox.Show("выбрана 3 вкладка");
+                    break;
+                default:
+                    break;
+
+            }
+        }
+        /// <summary>
+        /// Переход на страницу редактирования
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Btn_Redactir_Click(object sender, RoutedEventArgs e)
+        {
+            switch (TabC_Main.SelectedIndex)
+            {
+                case 0:
+                    Manager.MainFrame.Navigate(new Pages.Page_BuhgaltAddEdit_Oklad(CellID));
+                    break;
+                case 2:
+                    break;
+                default:
+                    break;
+            }
+            }
+        private void intOnly_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            //узнаем Кто вызвал событие 
+            TextBox textBox = sender as TextBox;
+            //проверка что введена цифра
+            if (!Char.IsDigit(e.Text, 0))
+            {
+                e.Handled = true;
+                MessageBox.Show("Только Целые числа", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            //проверяем выходит ли за предел int
+            else if (!int.TryParse(textBox.Text + e.Text, out _))
+            {
+                MessageBox.Show("Максимальный размер числа не может быть больше 2147483647", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                e.Handled = true;
+
+            }
+        }
+        /// <summary>
+        /// Ограничение для TextBox для ввода только Дробных данных
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void floatOnly_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            //узнаем Кто вызвал событие 
+            TextBox textBox = sender as TextBox;
+            //проверка что в строке лишь 1 .
+            string fullText = textBox.Text + e.Text;
+            if (e.Text.Contains(",") && (textBox.Text.Contains(",") || textBox.Text.Length == 0))
+            {
+                e.Handled = true;
+                MessageBox.Show("неверно поставлена точка", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+
+            }
+            //проверка что введена цифра или .
+            else if (!Char.IsDigit(e.Text, 0) && e.Text != ",")
+            {
+                e.Handled = true;
+                MessageBox.Show("Только дробные числа", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else if (textBox.Text.Length > 4)
+            {
+                e.Handled = true;
+                MessageBox.Show("Длина строки не может превышать 5 символов", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+
+        }
+
+
+        /// <summary>
+        /// запись ID выделенной строки
+        /// </summary>
+        string CellID;
+        private void DG_SotridnikOklad_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Select0Items = false;
+            Btn_Redactir.Visibility = Visibility.Visible;
+            CellID = DG.GetSelectCell(DG_SotridnikOklad, 0);
+        }
+        /// <summary>
+        /// Переход в режим редактирования оклада
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DG_SotridnikOklad_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new Pages.Page_BuhgaltAddEdit_Oklad(CellID));
+        }
+        /// <summary>
+        /// Смена видимости кнопок , при выборе вкладки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TabI_OkladSotrud_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Btn_Add.Visibility = Visibility.Hidden;
+            Btn_delete.Visibility = Visibility.Hidden;
+            if(Select0Items) Btn_Redactir.Visibility = Visibility.Hidden;
+            Btn_Save.Visibility = Visibility.Hidden;
+        }
+        /// <summary>
+        /// Смена видимости кнопок , при выборе вкладки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TabI_Base_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Btn_Add.Visibility = Visibility.Visible;
+            Btn_delete.Visibility = Visibility.Visible;
+            Btn_Redactir.Visibility = Visibility.Visible;
+            Btn_Save.Visibility = Visibility.Hidden;
+        }
+        /// <summary>
+        /// Смена видимости кнопок , при выборе вкладки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TabI_LN_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Btn_Add.Visibility = Visibility.Hidden;
+            Btn_delete.Visibility = Visibility.Hidden;
+            Btn_Redactir.Visibility = Visibility.Hidden;
+            Btn_Save.Visibility = Visibility.Visible;
         }
 
        
-        private void DG_SotridnikOklad_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
-        {
-            //отправка значений измененый ячейки в бд
-        }
-
-        private void DG_SotridnikOklad_CurrentCellChanged(object sender, EventArgs e)
-        {
-
-          }
-        string bufercell = "";
-        private void DG_SotridnikOklad_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            //здесь должно быть копирование в переменную выбраной ячейки
-            bufercell = DG.returnCell(DG_SotridnikOklad);
-            
-        }
     }
 }
