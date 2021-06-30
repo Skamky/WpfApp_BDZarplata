@@ -44,7 +44,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
 
         private void Btn_Save_Click(object sender, RoutedEventArgs e)
         {
-
+          
         }
 
         private void LB_Sotrud_FIO_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -70,6 +70,11 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
         private void DG_Sotrud_Anketa_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Btn_Redactir_Click(sender, e);
+        }
+
+        private void Btn_Add_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new Page_AddRedAnketa());
         }
     }
 }

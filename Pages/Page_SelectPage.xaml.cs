@@ -34,5 +34,10 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
         {
             Classes.Manager.MainFrame.Navigate(new Pages.Page_SotrudnikMainInfo());
         }
+
+        private void Btn_Raschet_Click(object sender, RoutedEventArgs e)
+        {
+            Classes.Manager.MainFrame.Navigate(new Pages.Page_raschet());
+        }
     }
 }

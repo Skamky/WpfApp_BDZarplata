@@ -50,6 +50,6 @@
         <TextBox x:Name="TB_SchetZachisl" Grid.Column="1" Grid.Row="6"></TextBox>
         <TextBox x:Name="TB_Staj" Grid.Column="1" Grid.Row="8" PreviewTextInput="intOnly_PreviewTextInput"></TextBox>
         <Button x:Name="Btn_Save" Grid.Column="0" Grid.Row="9" Margin="5" Click="Btn_Save_Click">Сохранить</Button>
-        
+        <Button x:Name="Btn_Delete" Grid.Column="1" Grid.Row="9" Margin="5" Click="Btn_Delete_Click">Удалить</Button>
     </Grid>
 </Page>

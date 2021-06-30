@@ -148,5 +148,25 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             }
             Manager.MainFrame.Navigate(new Page_SotrudnikMainInfo());
         }
+
+        private void Btn_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult MR;
+            if (IDSotrud == "")
+            {
+                MR = MessageBox.Show("Объект для удаления не выбран. \n  хотите выбрать его сейчас?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (MR == MessageBoxResult.Yes) Classes.Manager.MainFrame.Navigate(new Page_SotrudnikMainInfo());
+                else return;
+            }
+            else if (MessageBoxResult.Yes == MessageBox.Show("Вы собираетесь безвозвратно удалить\n Вы уверены?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Warning))
+                {
+                    //ТК в БД прописано каскадное удаление ,удаляем лишь из родительской таблицы 
+                   string comand = "DELETE FROM [bd_zarplta].[sotrudnik] WHERE ID =" + IDSotrud;
+                    Classes.DB.queryScalar(comand);
+                    Classes.Manager.UpdateLabel("Готово.");
+                    MessageBox.Show("Операция успешна выполнена!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Classes.Manager.MainFrame.Navigate(new Page_SotrudnikMainInfo());
+                }
+        }
     }
 }

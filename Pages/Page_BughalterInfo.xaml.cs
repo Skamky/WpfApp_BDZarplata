@@ -207,6 +207,9 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             Btn_Save.Visibility = Visibility.Visible;
         }
 
-       
+        private void Btn_Raschet_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new Page_raschet());
+        }
     }
 }

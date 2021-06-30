@@ -20,10 +20,10 @@
 
         </Grid.RowDefinitions>
         <Menu>
-            <Button x:Name="Btn_Add" Cursor="Hand" Content="Добавить" Visibility="Hidden"/>
+            <Button x:Name="Btn_Add" Cursor="Hand" Content="Добавить" Visibility="Visible" Click="Btn_Add_Click"/>
             <Button x:Name="Btn_Redactir" Cursor="Hand" Content="Изменить" Visibility="Hidden" Click="Btn_Redactir_Click"/>
             <Button x:Name="Btn_delete" Cursor="Hand" Content="Удалить" Visibility="Hidden"/>
-            <Button x:Name="Btn_Save" Cursor="Hand" Content="Сохранить" Visibility="Hidden" Click="Btn_Save_Click"/>
+            <Button x:Name="Btn_Save" Cursor="Hand" Content="Сохранить" Visibility="Visible" Click="Btn_Save_Click"/>
         </Menu>
         <TabControl Grid.Row="1" x:Name="TabC_Main">
             <TabItem Header="Основные данные сотрудников">
@@ -35,10 +35,21 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
                         <ColumnDefinition/>
+                        <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <ListBox x:Name="LB_Sotrud_FIO" Grid.Column="0" SelectionChanged="LB_Sotrud_FIO_SelectionChanged" ></ListBox>
                     <ListBox x:Name="LB_Sotrud_id" SelectionChanged="LB_Sotrud_id_SelectionChanged" Visibility="Hidden" ></ListBox>
-                    <DataGrid x:Name="DG_Raspisnie" Grid.Column="1"></DataGrid>
+                    <DataGrid x:Name="DG_Raspisnie" Grid.Column="1" ></DataGrid>
+                    <StackPanel Grid.Column="2">
+                        <Calendar></Calendar>
+                        <Label>Статус Сотрудника</Label>
+                        <ComboBox></ComboBox>
+                        <Label>Статус дня</Label>
+                        <ComboBox></ComboBox>
+
+
+
+                    </StackPanel>
                 </Grid>
             </TabItem>
             <TabItem Header="Штрафы и надбавки">

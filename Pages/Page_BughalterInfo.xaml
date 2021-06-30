@@ -24,6 +24,7 @@
             <Button x:Name="Btn_Redactir" Cursor="Hand" Content="Изменить" Visibility="Hidden" Click="Btn_Redactir_Click"/>
             <Button x:Name="Btn_delete" Cursor="Hand" Content="Удалить" Visibility="Hidden"/>
             <Button x:Name="Btn_Save" Cursor="Hand" Content="Сохранить" Visibility="Hidden" Click="Btn_Save_Click"/>
+            <Button x:Name="Btn_Raschet" Cursor="Hand" Content="Перейти к Созданию Расчётного листа..." Click="Btn_Raschet_Click"></Button>
         </Menu>
         <TabControl Grid.Row="1" x:Name="TabC_Main">
             <TabItem x:Name="TabI_OkladSotrud" Header="Оклады сотрудников" GotFocus="TabI_OkladSotrud_GotFocus" >
