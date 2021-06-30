@@ -61,7 +61,11 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
                 Classes.Manager.MainFrame.Navigate(new Pages.Page_BughalterInfo());
             }
         }
-
+        /// <summary>
+        /// Фильтр int значений для TextBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void intOnly_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             //узнаем Кто вызвал событие 

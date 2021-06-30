@@ -12,13 +12,13 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
     class Procedure
     {
         /// <summary>
-        /// Обновление указанной таблицы в бд
+        /// Обновление значений указанной таблицы в БД
         /// </summary>
         /// <param name="NameTable">Имя таблицы</param>
         /// <param name="ColumnsName">Массив имен столбцов</param>
         /// <param name="ColumnsData">Массив значений этих столбцов</param>
         /// <param name="Where">Условие отбора</param>
-        public static void UpdateTable(string NameTable, string[] ColumnsName,string[] ColumnsData,string Where)
+        public static void UpdateTable(string NameTable, string[] ColumnsName, string[] ColumnsData, string Where)
         {
             string sqlComand = $"UPDATE {NameTable} SET {ColumnsName[0]} = {ColumnsData[0]}";
             if (ColumnsData.Length == ColumnsName.Length)
@@ -31,6 +31,50 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
                 Classes.DB.queryScalar(sqlComand);
             }
             else MessageBox.Show("err UpdateTable \n Количество столбцов не совпадает с количеством значений");
+        }
+
+
+        /// <summary>
+        /// Добавление значений указанной таблицы в БД
+        /// </summary>
+        /// <param name="NameTable">Имя таблицы</param>
+        /// <param name="ColumnsName">Массив имен столбцов</param>
+        /// <param name="ColumnsData">Массив значений этих столбцов</param>
+        public static void InsertTable(string NameTable, string[] ColumnsName, string[] ColumnsData)
+        {
+            string sqlComand = $"INSERT INTO {NameTable} ( {ColumnsName[0]}";
+            if (ColumnsData.Length == ColumnsName.Length)
+            {
+                for (int i = 1; i < ColumnsName.Length; i++)
+                {
+                    sqlComand += $", {ColumnsName[i]}";
+                }
+                sqlComand += $") VALUES( {ColumnsData[0]} ";
+                for (int i = 1; i < ColumnsData.Length; i++)
+                {
+                    sqlComand += $",= {ColumnsData[i]}";
+                }
+                sqlComand += ")";
+                DB.queryScalar(sqlComand);
+
+            }
+            else MessageBox.Show("err InsertTable \n Количество столбцов не совпадает с количеством значений");
+        }
+        /// <summary>
+        /// Добавление в уже определенный массив новых элементов
+        /// </summary>
+        /// <param name="array">Массив в который необходимо добавить элемент</param>
+        /// <param name="str">новый элемент</param>
+        /// <returns>Новый массив с добавленным в конец</returns>
+        public static string[] AddStr_to_array(string[] array, string str)
+        {
+            string[] newarray = new string[array.Length + 1];
+            for (int i = 0; i < array.Length; i++)
+            {
+                newarray[i] = array[i];
+            }
+            newarray[array.Length] = str;
+            return newarray;
         }
     }
 }

@@ -1,0 +1,55 @@
+﻿<Page x:Class="WpfApp_КурсоваяРабота2021_BDZarplata.Pages.Page_AddRedAnketa"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp_КурсоваяРабота2021_BDZarplata.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Page_AddRedAnketa">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Label>ФИО</Label>
+        <ComboBox x:Name="CB_Doljnost" Grid.Row="1" SelectionChanged="CB_Doljnost_SelectionChanged" SelectedIndex="1"/>
+        <ComboBox x:Name="CB_DoljnostID" Grid.Row="1" Grid.Column="1" Visibility="Hidden"></ComboBox>
+        <Label Grid.Row="2">Семейный статус</Label>
+        <Label Grid.Row="3">Количество здоровых детей</Label>
+        <Label Grid.Row="4">Количество детей инвалидов</Label>
+        <Label Grid.Row="5">Количество Опекаемых детей инвалидов</Label>
+        <Label Grid.Row="6">Счёт зачисления</Label>
+        <ComboBox x:Name="CB_SpecStatus" Grid.Row="7" SelectedIndex="0">
+            <ComboBoxItem Content="Спец. Статус Отсутствует"/>
+            <ComboBoxItem Content="Спец статус 1"/>
+            <ComboBoxItem Content="Спец Статус 2"/>
+        </ComboBox>
+        <Label Grid.Row="8">Стаж(в месяцах)</Label>
+
+        <TextBox x:Name="TB_FIO" Grid.Column="1" Grid.Row="0"></TextBox>
+        
+        <TextBox x:Name="TB_FamilyStatus" Grid.Column="1" Grid.Row="2"></TextBox>
+        <TextBox x:Name="TB_kidsZd" Grid.Column="1" Grid.Row="3" PreviewTextInput="intOnly_PreviewTextInput"></TextBox>
+        <TextBox x:Name="TB_KidInvalid" Grid.Column="1" Grid.Row="4" PreviewTextInput="intOnly_PreviewTextInput"></TextBox>
+        <TextBox x:Name="TB_KidInvalid_opek" Grid.Column="1" Grid.Row="5" PreviewTextInput="intOnly_PreviewTextInput"></TextBox>
+        <TextBox x:Name="TB_SchetZachisl" Grid.Column="1" Grid.Row="6"></TextBox>
+        <TextBox x:Name="TB_Staj" Grid.Column="1" Grid.Row="8" PreviewTextInput="intOnly_PreviewTextInput"></TextBox>
+        <Button x:Name="Btn_Save" Grid.Column="0" Grid.Row="9" Margin="5" Click="Btn_Save_Click">Сохранить</Button>
+        
+    </Grid>
+</Page>

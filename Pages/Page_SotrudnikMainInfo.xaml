@@ -11,7 +11,7 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition/>
+
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -26,10 +26,32 @@
             <Button x:Name="Btn_Save" Cursor="Hand" Content="Сохранить" Visibility="Hidden" Click="Btn_Save_Click"/>
         </Menu>
         <TabControl Grid.Row="1" x:Name="TabC_Main">
-            <TabItem>
-            <DataGrid x:Name="DG_Sotrud" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+            <TabItem Header="Основные данные сотрудников">
+                <DataGrid x:Name="DG_Sotrud_Anketa" Grid.ColumnSpan="2" Grid.RowSpan="2" MouseDoubleClick="DG_Sotrud_Anketa_MouseDoubleClick"/>
             </TabItem>
-            
+
+            <TabItem Header="Расписание">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="LB_Sotrud_FIO" Grid.Column="0" SelectionChanged="LB_Sotrud_FIO_SelectionChanged" ></ListBox>
+                    <ListBox x:Name="LB_Sotrud_id" SelectionChanged="LB_Sotrud_id_SelectionChanged" Visibility="Hidden" ></ListBox>
+                    <DataGrid x:Name="DG_Raspisnie" Grid.Column="1"></DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Штрафы и надбавки">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="LB_Sotrud_FIO2" Grid.Column="0" SelectionChanged="LB_Sotrud_FIO2_SelectionChanged"></ListBox>
+                    <ListBox x:Name="LB_Sotrud_id2" SelectionChanged="LB_Sotrud_id2_SelectionChanged" Visibility="Hidden"></ListBox>
+                    <DataGrid x:Name="DG_NadbavShtraf" Grid.Column="1"></DataGrid>
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Page>
