@@ -101,10 +101,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Page_Grid.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\Page_Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -131,9 +127,6 @@
     </Compile>
     <Compile Include="Pages\Page_BughalterInfo.xaml.cs">
       <DependentUpon>Page_BughalterInfo.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Page_Grid.xaml.cs">
-      <DependentUpon>Page_Grid.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Page_Login.xaml.cs">
       <DependentUpon>Page_Login.xaml</DependentUpon>

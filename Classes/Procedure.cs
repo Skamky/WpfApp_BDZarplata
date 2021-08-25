@@ -18,12 +18,12 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
         /// <param name="ColumnsName">Массив имен столбцов</param>
         /// <param name="ColumnsData">Массив значений этих столбцов</param>
         /// <param name="Where">Условие отбора</param>
-        public static void UpdateTable(string NameTable, string[] ColumnsName, string[] ColumnsData, string Where)
+        public static void UpdateTable(string NameTable, List<string> ColumnsName, List<string> ColumnsData, string Where)
         {
             string sqlComand = $"UPDATE {NameTable} SET {ColumnsName[0]} = {ColumnsData[0]}";
-            if (ColumnsData.Length == ColumnsName.Length)
+            if (ColumnsData.Count == ColumnsName.Count)
             {
-                for (int i = 1; i < ColumnsData.Length; i++)
+                for (int i = 1; i < ColumnsData.Count; i++)
                 {
                     sqlComand += $", {ColumnsName[i]} = {ColumnsData[i]}";
                 }
@@ -40,19 +40,20 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
         /// <param name="NameTable">Имя таблицы</param>
         /// <param name="ColumnsName">Массив имен столбцов</param>
         /// <param name="ColumnsData">Массив значений этих столбцов</param>
-        public static void InsertTable(string NameTable, string[] ColumnsName, string[] ColumnsData)
+        public static void InsertTable(string NameTable, List<string> ColumnsName, List<string> ColumnsData)
         {
+            
             string sqlComand = $"INSERT INTO {NameTable} ( {ColumnsName[0]}";
-            if (ColumnsData.Length == ColumnsName.Length)
+            if (ColumnsData.Count == ColumnsName.Count)
             {
-                for (int i = 1; i < ColumnsName.Length; i++)
+                for (int i = 1; i < ColumnsName.Count; i++)
                 {
                     sqlComand += $", {ColumnsName[i]}";
                 }
                 sqlComand += $") VALUES( {ColumnsData[0]} ";
-                for (int i = 1; i < ColumnsData.Length; i++)
+                for (int i = 1; i < ColumnsData.Count; i++)
                 {
-                    sqlComand += $",= {ColumnsData[i]}";
+                    sqlComand += $", {ColumnsData[i]}";
                 }
                 sqlComand += ")";
                 DB.queryScalar(sqlComand);
@@ -60,21 +61,6 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
             }
             else MessageBox.Show("err InsertTable \n Количество столбцов не совпадает с количеством значений");
         }
-        /// <summary>
-        /// Добавление в уже определенный массив новых элементов
-        /// </summary>
-        /// <param name="array">Массив в который необходимо добавить элемент</param>
-        /// <param name="str">новый элемент</param>
-        /// <returns>Новый массив с добавленным в конец</returns>
-        public static string[] AddStr_to_array(string[] array, string str)
-        {
-            string[] newarray = new string[array.Length + 1];
-            for (int i = 0; i < array.Length; i++)
-            {
-                newarray[i] = array[i];
-            }
-            newarray[array.Length] = str;
-            return newarray;
-        }
+   
     }
 }

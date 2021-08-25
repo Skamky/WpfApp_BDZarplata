@@ -52,8 +52,8 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
                 return;
             }
 
-            string[] columnname = { "[Oklad]", "[Travmat]" };
-            string[] datacolumn = { TB_Oklad.Text, TB_Travmat.Text.Replace(',', '.') };
+            List<string>columnname = new List<string>() { "[Oklad]", "[Travmat]" };
+             List<string> datacolumn = new List<string>() { TB_Oklad.Text, TB_Travmat.Text.Replace(',', '.') };
             MessageBoxResult boxResult = MessageBox.Show("Сохранить изменения?", "Запрос на сохранение", MessageBoxButton.YesNo);
             if (boxResult == MessageBoxResult.Yes)
             {

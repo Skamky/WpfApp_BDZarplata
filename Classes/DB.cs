@@ -129,7 +129,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
                 if (temp != null) return temp;
                 else
                 {
-                    temp = "null";
+                    temp = "";
                     return temp;
                 }
             }
@@ -244,22 +244,27 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
 
         }
 
-        //Выполнение внешнего SQl Файла
-        //Выполняет для подключения инструкцию Transact-SQL и возвращает количество задействованных в инструкции строк.
-        public static bool queryData(string sql) 
+        /// <summary>
+        /// Выполнение внешнего SQl Файла или запроса с возвратом количества строк
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns> количество задействованных в инструкции строк или -1 если при обработке запроса происходит ошибка </returns>
+        public static int queryData(string sql) 
         {
             Manager.UpdateLabel("Выполняю запрос...");
             DB_Connect.OpenConnection();
             try
             {
                 SqlCommand command = new SqlCommand(sql, DB_Connect.myConnection);
-                command.ExecuteNonQuery();
-                Manager.UpdateLabel("Запрос успешно выполнен!");
+                return command.ExecuteNonQuery();
+               
                 
             }
-            catch(Exception ex) { MessageBox.Show("Произошла Ошибка \n"+ ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error); return false; }
+            catch(Exception ex) { MessageBox.Show("Произошла Ошибка \n"+ ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error); 
+                return -1; 
+            }
             finally { DB_Connect.CloseConnection(); }
-            return true;
+            
 
         }
         

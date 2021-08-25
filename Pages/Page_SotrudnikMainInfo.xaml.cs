@@ -27,8 +27,8 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             Classes.DB.loadDataGrid(DG_Sotrud_Anketa, "SELECT [idSotrudnik], full_name , t2.title, family_status, num_zd_kids,num_invalid_kids, opeka, SpecStatus, Staj FROM[bd_zarplta].[sotrudnik] t1 LEFT JOIN bd_zarplta.doljnost t2 ON t1.idDoljnost = t2.idDoljnost");
             Classes.DB.LoadDataListBox(LB_Sotrud_FIO, "SELECT  [idSotrudnik],[full_name]  FROM [BD_Zarplata].[bd_zarplta].[sotrudnik]", 1);
             Classes.DB.LoadDataListBox(LB_Sotrud_id, "SELECT [idSotrudnik]  ,[full_name] FROM [BD_Zarplata].[bd_zarplta].[sotrudnik]", 0);
-            Classes.DB.LoadDataListBox(LB_Sotrud_FIO2, "SELECT  [idSotrudnik],[full_name]  FROM [BD_Zarplata].[bd_zarplta].[sotrudnik]", 1);
-            Classes.DB.LoadDataListBox(LB_Sotrud_id2, "SELECT [idSotrudnik]  ,[full_name] FROM [BD_Zarplata].[bd_zarplta].[sotrudnik]", 0);
+            DB.LoadDataComboBox(CB_StatusDay, "SELECT DISTINCT [StatusDay] FROM[BD_Zarplata].[bd_zarplta].[graphik_rabot]", 0);
+            DB.LoadDataComboBox(CB_StatusSotrud, "SELECT DISTINCT [StatusSotrud] FROM[BD_Zarplata].[bd_zarplta].[graphik_rabot]", 0);
         }
 
         private void Btn_Redactir_Click(object sender, RoutedEventArgs e)
@@ -54,18 +54,10 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
 
         private void LB_Sotrud_id_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Classes.DB.loadDataGrid(DG_Raspisnie, $"SELECT[DATE] ,[StatusSotrud] ,[StatusDay] FROM [BD_Zarplata].[bd_zarplta].[graphik_rabot] where [Sotrudnik_idSotrudnik] = {LB_Sotrud_id.SelectedItem}");
+            Classes.DB.loadDataGrid(DG_Raspisnie, $"SELECT FORMAT([DATE],'d') ,[StatusSotrud] ,[StatusDay] FROM [BD_Zarplata].[bd_zarplta].[graphik_rabot] where [Sotrudnik_idSotrudnik] = {LB_Sotrud_id.SelectedItem}");
         }
 
-        private void LB_Sotrud_FIO2_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            LB_Sotrud_id2.SelectedIndex = LB_Sotrud_FIO2.SelectedIndex;
-        }
-
-        private void LB_Sotrud_id2_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Classes.DB.loadDataGrid(DG_NadbavShtraf, $"SELECT [Data],[Nadbav]      ,[Vichet]        FROM [BD_Zarplata].[bd_zarplta].[zp]  Where [Sotrudnik_idSotrudnik]= {LB_Sotrud_id2.SelectedItem}");
-        }
+      
 
         private void DG_Sotrud_Anketa_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -75,6 +67,46 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
         private void Btn_Add_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new Page_AddRedAnketa());
+        }
+
+        private void DG_Raspisnie_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                calendar_raspisan.DisplayDate = Convert.ToDateTime(DG.GetSelectCell(DG_Raspisnie, 0));
+                calendar_raspisan.SelectedDate = Convert.ToDateTime(DG.GetSelectCell(DG_Raspisnie, 0));
+                CB_StatusDay.SelectedItem = DG.GetSelectCell(DG_Raspisnie, 2);
+                CB_StatusSotrud.SelectedItem = DG.GetSelectCell(DG_Raspisnie, 1);
+                BTN_RedRaspisan.IsEnabled = true;
+            }
+            catch
+            {
+                calendar_raspisan.DisplayDate = DateTime.Now;
+                calendar_raspisan.SelectedDate = DateTime.Now;
+                CB_StatusDay.SelectedIndex = 1;
+                CB_StatusSotrud.SelectedIndex = 1;
+                BTN_RedRaspisan.IsEnabled = false;
+            }
+        }
+
+        private void datepicker_raspisan_LostFocus(object sender, RoutedEventArgs e)
+        {
+            //MessageBox.Show(DG_Raspisnie.SelectedItem.ToString());
+            DG_Raspisnie.SelectedItem = calendar_raspisan.SelectedDate.ToString();
+        }
+
+        private void BTN_RedRaspisan_Click(object sender, RoutedEventArgs e)
+        {
+
+            Procedure.UpdateTable
+                (
+                "[BD_Zarplata].[bd_zarplta].[graphik_rabot]"
+                , new List<string>() { "[StatusSotrud]", "[StatusDay]" }
+                , new List<string>() { "'"+CB_StatusSotrud.SelectedItem+"'", "'"+CB_StatusDay.SelectedItem+"'" }
+                , $"where[Sotrudnik_idSotrudnik] = {LB_Sotrud_id.SelectedItem} AND[DATE] = '{calendar_raspisan.SelectedDate}'"
+                );
+            Classes.DB.loadDataGrid(DG_Raspisnie, $"SELECT FORMAT([DATE],'d') ,[StatusSotrud] ,[StatusDay] FROM [BD_Zarplata].[bd_zarplta].[graphik_rabot] where [Sotrudnik_idSotrudnik] = {LB_Sotrud_id.SelectedItem}");
+            MessageBox.Show("Успешно Обновленно!");
         }
     }
 }

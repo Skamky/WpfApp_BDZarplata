@@ -16,18 +16,32 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition/>
-            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
 
         </Grid.RowDefinitions>
         <Menu>
             <Button x:Name="Btn_Add" Cursor="Hand" Content="Добавить" Visibility="Visible" Click="Btn_Add_Click"/>
             <Button x:Name="Btn_Redactir" Cursor="Hand" Content="Изменить" Visibility="Hidden" Click="Btn_Redactir_Click"/>
             <Button x:Name="Btn_delete" Cursor="Hand" Content="Удалить" Visibility="Hidden"/>
-            <Button x:Name="Btn_Save" Cursor="Hand" Content="Сохранить" Visibility="Visible" Click="Btn_Save_Click"/>
+            <Button x:Name="Btn_Save" Cursor="Hand" Content="Сохранить" Visibility="Hidden" Click="Btn_Save_Click"/>
         </Menu>
         <TabControl Grid.Row="1" x:Name="TabC_Main">
             <TabItem Header="Основные данные сотрудников">
-                <DataGrid x:Name="DG_Sotrud_Anketa" Grid.ColumnSpan="2" Grid.RowSpan="2" MouseDoubleClick="DG_Sotrud_Anketa_MouseDoubleClick"/>
+                <!--"SELECT [idSotrudnik], 
+                full_name , t2.title, family_status, num_zd_kids,num_invalid_kids, opeka, SpecStatus, Staj FROM[bd_zarplta].[sotrudnik] t1 LEFT JOIN bd_zarplta.doljnost t2 ON t1.idDoljnost = t2.idDoljnost");-->
+                <DataGrid x:Name="DG_Sotrud_Anketa" Grid.ColumnSpan="2" Grid.RowSpan="2" MouseDoubleClick="DG_Sotrud_Anketa_MouseDoubleClick" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Path=idSotrudnik}" Header="Табельный Номер" />
+                        <DataGridTextColumn Binding="{Binding Path=full_name}" Header="Полное Имя"/>
+                        <DataGridTextColumn Binding="{Binding Path=title}" Header="Должность"/>
+                        <DataGridTextColumn Binding="{Binding Path=family_status}" Header="Семейное Положение"/>
+                        <DataGridTextColumn Binding="{Binding Path=num_zd_kids}" Header="Здоровых Детей"/>
+                        <DataGridTextColumn Binding="{Binding Path=num_invalid_kids}" Header="Детей Инвалидов"/>
+                        <DataGridTextColumn Binding="{Binding Path=opeka}" Header="Опекаемых Детей инвалидов"/>
+                        <DataGridTextColumn Binding="{Binding Path=SpecStatus}" Header="Специальный статус"/>
+                        <DataGridTextColumn Binding="{Binding Path=Staj}" Header="Стаж"/>
+                    </DataGrid.Columns>
+                </DataGrid>
             </TabItem>
 
             <TabItem Header="Расписание">
@@ -39,30 +53,25 @@
                     </Grid.ColumnDefinitions>
                     <ListBox x:Name="LB_Sotrud_FIO" Grid.Column="0" SelectionChanged="LB_Sotrud_FIO_SelectionChanged" ></ListBox>
                     <ListBox x:Name="LB_Sotrud_id" SelectionChanged="LB_Sotrud_id_SelectionChanged" Visibility="Hidden" ></ListBox>
-                    <DataGrid x:Name="DG_Raspisnie" Grid.Column="1" ></DataGrid>
+                    <DataGrid x:Name="DG_Raspisnie" Grid.Column="1" SelectionChanged="DG_Raspisnie_SelectionChanged" >
+                        <!--[StatusSotrud] ,[StatusDay]-->
+                        <!--<DataGridTextColumn Binding="{Binding Path=Column1}" Header="Дата" />
+                        <DataGridTextColumn Binding="{Binding Path=StatusSotrud}" Header="Статус День" />
+                        <DataGridTextColumn Binding="{Binding Path=StatusDay}" Header="Статус Сотрудника" />-->
+                    </DataGrid>
                     <StackPanel Grid.Column="2">
-                        <Calendar></Calendar>
+
+                        <Calendar x:Name="calendar_raspisan"></Calendar>
                         <Label>Статус Сотрудника</Label>
-                        <ComboBox></ComboBox>
+                        <ComboBox x:Name="CB_StatusSotrud" SelectedIndex="1"></ComboBox>
                         <Label>Статус дня</Label>
-                        <ComboBox></ComboBox>
-
-
-
+                        <ComboBox x:Name="CB_StatusDay" SelectedIndex="1"></ComboBox>
+                        <Button x:Name="BTN_RedRaspisan" IsEnabled="False" Click="BTN_RedRaspisan_Click">Сохранить Изменения</Button>
+                        
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="Штрафы и надбавки">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <ListBox x:Name="LB_Sotrud_FIO2" Grid.Column="0" SelectionChanged="LB_Sotrud_FIO2_SelectionChanged"></ListBox>
-                    <ListBox x:Name="LB_Sotrud_id2" SelectionChanged="LB_Sotrud_id2_SelectionChanged" Visibility="Hidden"></ListBox>
-                    <DataGrid x:Name="DG_NadbavShtraf" Grid.Column="1"></DataGrid>
-                </Grid>
-            </TabItem>
+           
         </TabControl>
     </Grid>
 </Page>

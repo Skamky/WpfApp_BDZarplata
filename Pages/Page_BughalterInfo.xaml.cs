@@ -33,8 +33,10 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
 
             TabI_LN_Initialized(null, null);
             DB.loadDataGrid(DG_Base, "SELECT *  FROM [BD_Zarplata].[bd_zarplta].[base]");
-            
-            
+
+
+            Classes.DB.LoadDataListBox(LB_Sotrud_FIO2, "SELECT  [idSotrudnik],[full_name]  FROM [BD_Zarplata].[bd_zarplta].[sotrudnik]", 1);
+            Classes.DB.LoadDataListBox(LB_Sotrud_id2, "SELECT [idSotrudnik]  ,[full_name] FROM [BD_Zarplata].[bd_zarplta].[sotrudnik]", 0);
             Manager.MainProgressBar.Visibility = Visibility.Hidden;
 
         }
@@ -69,8 +71,8 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
                 case 1:
                     if (MessageBoxResult.OK == MessageBox.Show("Сохранить Изменения? \n Ок -сохранить \n Отмена - Отменить все изменения", "Запрос на сохранение", MessageBoxButton.OKCancel))
                     {
-                        string[] columnName = { "[NDFL]", "[PFR]", "[FCC]", "[FOMC]", "[kid1]", "[kid3]", "[invalid]", "[invlid_o]", "[MROT]" };
-                        string[] MasData = { TB_NDFL.Text.Replace(',', '.'), TB_PFR.Text.Replace(',', '.'), TB_FCC.Text.Replace(',', '.'), TB_FOMC.Text.Replace(',', '.'), TB_Kid1.Text, TB_Kid3.Text, TB_KidInvalid.Text, TB_KidInvalid_opek.Text, TB_Mrot.Text };
+                        List<string> columnName = new List<string>() { "[NDFL]", "[PFR]", "[FCC]", "[FOMC]", "[kid1]", "[kid3]", "[invalid]", "[invlid_o]", "[MROT]" };
+                        List<string> MasData = new List<string>() { TB_NDFL.Text.Replace(',', '.'), TB_PFR.Text.Replace(',', '.'), TB_FCC.Text.Replace(',', '.'), TB_FOMC.Text.Replace(',', '.'), TB_Kid1.Text, TB_Kid3.Text, TB_KidInvalid.Text, TB_KidInvalid_opek.Text, TB_Mrot.Text };
                         Classes.Procedure.UpdateTable("[BD_Zarplata].[bd_zarplta].[h]", columnName, MasData, "");
                     }
                     TabI_LN_Initialized(null, null);
@@ -206,10 +208,56 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             Btn_Redactir.Visibility = Visibility.Hidden;
             Btn_Save.Visibility = Visibility.Visible;
         }
+        private void LB_Sotrud_FIO2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LB_Sotrud_id2.SelectedIndex = LB_Sotrud_FIO2.SelectedIndex;
+        }
 
+        private void LB_Sotrud_id2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Classes.DB.loadDataGrid(DG_NadbavShtraf, $"SELECT  FORMAT([Data],'d'),[Nadbav]      ,[Vichet]        FROM [BD_Zarplata].[bd_zarplta].[zp]  Where [Sotrudnik_idSotrudnik]= {LB_Sotrud_id2.SelectedItem}");
+            CB_Data_Nadbav.Items.Clear();
+            DB.LoadDataComboBox(CB_Data_Nadbav, $"SELECT [Data] FROM [BD_Zarplata].[bd_zarplta].[zp]  Where [Sotrudnik_idSotrudnik]= {LB_Sotrud_id2.SelectedItem}", 0);
+        }
+        private void DG_NadbavShtraf_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                Calendar2.DisplayDate = Convert.ToDateTime(DG.GetSelectCell(DG_NadbavShtraf, 0));
+                Calendar2.SelectedDate = Convert.ToDateTime(DG.GetSelectCell(DG_NadbavShtraf, 0));
+                TB_Nadbav.Text = DG.GetSelectCell(DG_NadbavShtraf, 1);
+                TB_Vichet.Text = DG.GetSelectCell(DG_NadbavShtraf, 2);
+                Btn_Red_Nadbav.IsEnabled = true;
+            }
+            catch
+            {
+                Calendar2.DisplayDate = DateTime.Now;
+                Calendar2.SelectedDate = DateTime.Now;
+                TB_Nadbav.Text = "";
+                TB_Vichet.Text="";
+                Btn_Red_Nadbav.IsEnabled = false;
+            }
+        }
+        /// <summary>
+        /// переход к странице расчета
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Btn_Raschet_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new Page_raschet());
+        }
+
+        private void Btn_Red_Nadbav_Click(object sender, RoutedEventArgs e)
+        {
+            Procedure.UpdateTable
+                (
+                "[BD_Zarplata].[bd_zarplta].[zp]"
+                , new List<string>() { "[Vichet]", "[Nadbav]" }
+                , new List<string>() {  TB_Vichet.Text , TB_Nadbav.Text }
+                , $"where[Sotrudnik_idSotrudnik] = {LB_Sotrud_id2.SelectedItem} AND [Data] = '{Calendar2.SelectedDate}'"
+                );
+            Classes.DB.loadDataGrid(DG_NadbavShtraf, $"SELECT  FORMAT([Data],'d'),[Nadbav]      ,[Vichet]        FROM [BD_Zarplata].[bd_zarplta].[zp]  Where [Sotrudnik_idSotrudnik]= {LB_Sotrud_id2.SelectedItem}");
         }
     }
 }

@@ -45,8 +45,8 @@
             <Label  x:Name="L_FOMC">ФОМС </Label>
             <Label x:Name="L_Travmatizm"></Label>
         </StackPanel>
-        <Button x:Name="BTN_Raschet" Content="Расчитать" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="1"  Width="120" Click="BTN_Raschet_Click"/>
-        <Button x:Name="BTN_Export" Content="Создать документ" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="1" Width="120" Click="BTN_Export_Click"></Button>
+        <Button x:Name="BTN_Raschet" Content="Расчитать" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="1"  Width="120" Click="BTN_Raschet_Click" IsEnabled="False"/>
+        <Button x:Name="BTN_Export" Content="Создать документ" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="1" Width="120" Click="BTN_Export_Click" IsEnabled="False"></Button>
         <Calendar x:Name="calendar" Grid.Column="1"/>
 
     </Grid>

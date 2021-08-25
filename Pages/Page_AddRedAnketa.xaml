@@ -27,14 +27,14 @@
         </Grid.ColumnDefinitions>
 
         <Label>ФИО</Label>
-        <ComboBox x:Name="CB_Doljnost" Grid.Row="1" SelectionChanged="CB_Doljnost_SelectionChanged" SelectedIndex="1"/>
+        <ComboBox x:Name="CB_Doljnost" Grid.Row="1" Grid.Column="1" SelectionChanged="CB_Doljnost_SelectionChanged" SelectedIndex="1"/>
         <ComboBox x:Name="CB_DoljnostID" Grid.Row="1" Grid.Column="1" Visibility="Hidden"></ComboBox>
         <Label Grid.Row="2">Семейный статус</Label>
         <Label Grid.Row="3">Количество здоровых детей</Label>
         <Label Grid.Row="4">Количество детей инвалидов</Label>
         <Label Grid.Row="5">Количество Опекаемых детей инвалидов</Label>
         <Label Grid.Row="6">Счёт зачисления</Label>
-        <ComboBox x:Name="CB_SpecStatus" Grid.Row="7" SelectedIndex="0">
+        <ComboBox x:Name="CB_SpecStatus" Grid.Row="7"  Grid.Column="1" SelectedIndex="0">
             <ComboBoxItem Content="Спец. Статус Отсутствует"/>
             <ComboBoxItem Content="Спец статус 1"/>
             <ComboBoxItem Content="Спец Статус 2"/>
@@ -47,7 +47,7 @@
         <TextBox x:Name="TB_kidsZd" Grid.Column="1" Grid.Row="3" PreviewTextInput="intOnly_PreviewTextInput"></TextBox>
         <TextBox x:Name="TB_KidInvalid" Grid.Column="1" Grid.Row="4" PreviewTextInput="intOnly_PreviewTextInput"></TextBox>
         <TextBox x:Name="TB_KidInvalid_opek" Grid.Column="1" Grid.Row="5" PreviewTextInput="intOnly_PreviewTextInput"></TextBox>
-        <TextBox x:Name="TB_SchetZachisl" Grid.Column="1" Grid.Row="6"></TextBox>
+        <TextBox x:Name="TB_SchetZachisl" Grid.Column="1" Grid.Row="6"  ></TextBox>
         <TextBox x:Name="TB_Staj" Grid.Column="1" Grid.Row="8" PreviewTextInput="intOnly_PreviewTextInput"></TextBox>
         <Button x:Name="Btn_Save" Grid.Column="0" Grid.Row="9" Margin="5" Click="Btn_Save_Click">Сохранить</Button>
         <Button x:Name="Btn_Delete" Grid.Column="1" Grid.Row="9" Margin="5" Click="Btn_Delete_Click">Удалить</Button>

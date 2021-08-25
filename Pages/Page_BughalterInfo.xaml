@@ -29,13 +29,43 @@
         <TabControl Grid.Row="1" x:Name="TabC_Main">
             <TabItem x:Name="TabI_OkladSotrud" Header="Оклады сотрудников" GotFocus="TabI_OkladSotrud_GotFocus" >
                 <DataGrid x:Name="DG_SotridnikOklad" 
+                           AutoGenerateColumns="True"
                            SelectionChanged="DG_SotridnikOklad_SelectionChanged"  MouseDoubleClick="DG_SotridnikOklad_MouseDoubleClick"  >
-                    <!--<DataGrid.Columns>
-                        --><!--<DataGridTextColumn Binding="{Binding Path=idDoljnost}" Visibility="Visible"/>--><!--
-                      
-                    </DataGrid.Columns>-->
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Path=idDoljnost}" Header="№"/>
+                        <DataGridTextColumn Binding="{Binding Path=title}" Header="Название"/>
+                        <DataGridTextColumn Binding="{Binding Path=Oklad}" Header="Оклад"/>
+                        <DataGridTextColumn Binding="{Binding Path=Travmat}" Header="Травматизм"/>
+
+                    </DataGrid.Columns>
 
                 </DataGrid>   
+            </TabItem>
+            <TabItem Header="Штрафы и надбавки">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition/>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="LB_Sotrud_FIO2" Grid.Column="0" SelectionChanged="LB_Sotrud_FIO2_SelectionChanged"></ListBox>
+                    <ListBox x:Name="LB_Sotrud_id2" SelectionChanged="LB_Sotrud_id2_SelectionChanged" Visibility="Hidden"></ListBox>
+                    <DataGrid x:Name="DG_NadbavShtraf" Grid.Column="1" SelectionChanged="DG_NadbavShtraf_SelectionChanged">
+
+                    </DataGrid>
+
+                    <StackPanel Grid.Column="2">
+                        <Calendar x:Name="Calendar2" FontSize="14"/>
+                        <ComboBox x:Name="CB_Data_Nadbav" SelectedIndex="0" Visibility="Hidden">
+                            <ComboBoxItem x:Name="CBI_New_Ellement" Background="#FFB1DBF3" Content="&lt;Добавить Новый Эллемент&gt;" FontWeight="Bold" FontStyle="Italic"/>
+                        </ComboBox>
+                        <Label>Надбавка</Label>
+                        <TextBox x:Name="TB_Nadbav"  ></TextBox>
+                        <Label>Вычет</Label>
+                        <TextBox x:Name="TB_Vichet"  ></TextBox>
+                        <Button x:Name="Btn_Red_Nadbav" Click="Btn_Red_Nadbav_Click">Сохранить изменения</Button>
+                    </StackPanel>
+                </Grid>
             </TabItem>
             <TabItem Header="Льготы и налоги" x:Name="TabI_LN" GotFocus="TabI_LN_GotFocus" Initialized="TabI_LN_Initialized" Margin="-1,-2,-3,0">
                 <Grid >

@@ -23,8 +23,9 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
     {
         double NDFL_stavka, PFR_stavka, FCC_stavka, FOMC_stavka,TRavmat_stavka ,Mrot_stavka;
         int Kid1_stavka, Kid3_stavka, Invalid_stavka, Invalid_o_stavka;
+        int Nadbav, Vichet;
 
-       
+
 
         public Page_raschet()
         {
@@ -99,8 +100,8 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
                 }
             }
             
-            int Vichet = Convert.ToInt32( DB.queryScalar($"SELECT  [Vichet] FROM[BD_Zarplata].[bd_zarplta].[zp] where[Data] = '{CB_Date.SelectedItem}' AND [Sotrudnik_idSotrudnik] = {CB_SotrudID.SelectedItem}"));
-            int Nadbav = Convert.ToInt32(DB.queryScalar($"SELECT [Nadbav] FROM[BD_Zarplata].[bd_zarplta].[zp] where[Data] = '{CB_Date.SelectedItem}' AND [Sotrudnik_idSotrudnik] = {CB_SotrudID.SelectedItem}"));
+            Vichet = Convert.ToInt32( DB.queryScalar($"SELECT  [Vichet] FROM[BD_Zarplata].[bd_zarplta].[zp] where[Data] = '{CB_Date.SelectedItem}' AND [Sotrudnik_idSotrudnik] = {CB_SotrudID.SelectedItem}"));
+             Nadbav = Convert.ToInt32(DB.queryScalar($"SELECT [Nadbav] FROM[BD_Zarplata].[bd_zarplta].[zp] where[Data] = '{CB_Date.SelectedItem}' AND [Sotrudnik_idSotrudnik] = {CB_SotrudID.SelectedItem}"));
             //сумма зарплаты работника до вычета налогов
             double FactDohod = OkladMes + Nadbav - Vichet;
 
@@ -129,6 +130,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             L_FOMC.Content = (FactDohod / 100 * FOMC_stavka);
             L_pfr.Content = (FactDohod / 100 * PFR_stavka);
             L_Travmatizm.Content =  (FactDohod / 100 * TRavmat_stavka);
+            BTN_Export.IsEnabled = true;
 
         }
         private void BTN_Export_Click(object sender, RoutedEventArgs e)
@@ -183,9 +185,10 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             sheet.Cells[7, 1] = "Оклад";
             sheet.Cells[7, 5] = L_Oklad.Content;
             sheet.Cells[8, 1] = "Дополнительные выплаты";
-            //sheet.Cells[8,5]=
+            sheet.Cells[8, 5] = Nadbav;
             sheet.Cells[9, 1] = "Больничные пособия";
             sheet.Cells[11, 1] = "Всего начислено:";
+            sheet.Cells[11, 5] = "=СУММ(E7:E10)";
 
             sheet.Cells[12, 1] = "3. Взносы в ПФР";
             sheet.Cells[13, 1] = "Страховые взносы в ПФР (страховая часть 22%)";
@@ -195,8 +198,11 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             sheet.Cells[7, 6] = "НДФЛ по ставке 13%";
             sheet.Cells[7, 8] = L_Ndfl.Content;
             sheet.Cells[8, 6] = "Иные удержания";
+            sheet.Cells[8, 8] = Vichet;
             sheet.Cells[11, 6] = "Всего удержано:";
+            sheet.Cells[11, 8] = "=СУММ(H7:H10)";
             sheet.Cells[12, 6] = "Сумма к выплате";
+            sheet.Cells[12, 8] = itogZarplata;
             sheet.Cells[13, 6] = "Зачислено на счёт№" + DB.queryScalar("SELECT [SchetZachisl] FROM [BD_Zarplata].[bd_zarplta].[sotrudnik] WHERE" + CB_SotrudID.SelectedItem);
             sheet.Cells[14, 6] = "Выдано наличными";
             sheet.Cells[14, 8] = itogZarplata;
@@ -212,6 +218,8 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
 
         private void CB_FIO_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            BTN_Export.IsEnabled = false;
+            BTN_Raschet.IsEnabled = false;
             CB_Date.Items.Clear();
             CB_SotrudID.SelectedIndex = CB_FIO.SelectedIndex;
             DB.LoadDataComboBox(CB_Date, "SELECT [Data] FROM [BD_Zarplata].[bd_zarplta].[zp] wHERE [Sotrudnik_idSotrudnik]= " + CB_SotrudID.SelectedItem,0);
@@ -225,6 +233,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
         {
             calendar.DisplayDate = Convert.ToDateTime(CB_Date.SelectedItem);
             calendar.SelectedDate = Convert.ToDateTime(CB_Date.SelectedItem);
+            BTN_Raschet.IsEnabled = true;
         }
     }
 }

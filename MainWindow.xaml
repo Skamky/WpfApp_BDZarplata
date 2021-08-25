@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp_КурсоваяРабота2021_BDZarplata"
         mc:Ignorable="d"
-        Title="BDZArlata" Height="600" Width="800" MinWidth="800" MinHeight="600">
+        Title="BDZArlata" Height="600" Width="1500" MinWidth="800" MinHeight="600" FontSize="16">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
