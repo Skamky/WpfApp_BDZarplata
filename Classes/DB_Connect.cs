@@ -24,6 +24,9 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
             }
                 
         }
+        /// <summary>
+        /// закрытие соединения с БД
+        /// </summary>
         public static void CloseConnection()
         {
             if (myConnection.State == System.Data.ConnectionState.Open)

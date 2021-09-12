@@ -25,14 +25,18 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata
         public MainWindow()
         {
             InitializeComponent();
-            //MainFrame.Navigate(new Page_Login());
+            
             MainFrame.Navigate(new Page_Login());
             Manager.MainFrame = MainFrame;
             Manager.LabelStatus = LabelStatus1;
             Manager.MainProgressBar = ProgressBarStatus;
 
         }
-
+        /// <summary>
+        /// Возврат на предыдущую страницу
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             try

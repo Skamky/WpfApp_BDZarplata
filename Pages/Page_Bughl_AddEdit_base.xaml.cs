@@ -24,10 +24,15 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Сохранение данных
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Успешно сохранено!");
+            Classes.Manager.MainFrame.Navigate(new Pages.Page_BughalterInfo());
         }
 
         private void intOnly_PreviewTextInput(object sender, TextCompositionEventArgs e)

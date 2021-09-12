@@ -217,13 +217,22 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
         {
             LB_Sotrud_id2.SelectedIndex = LB_Sotrud_FIO2.SelectedIndex;
         }
-
+        /// <summary>
+        /// Подгрузка данных о надбавках и штрафах выбранного сотрудника в DataGrid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LB_Sotrud_id2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Classes.DB.loadDataGrid(DG_NadbavShtraf, $"SELECT  FORMAT([Data],'d') as 'Data',[Nadbav]      ,[Vichet]        FROM [BD_Zarplata].[bd_zarplta].[zp]  Where [Sotrudnik_idSotrudnik]= {LB_Sotrud_id2.SelectedItem}");
             CB_Data_Nadbav.Items.Clear();
             DB.LoadDataComboBox(CB_Data_Nadbav, $"SELECT [Data] FROM [BD_Zarplata].[bd_zarplta].[zp]  Where [Sotrudnik_idSotrudnik]= {LB_Sotrud_id2.SelectedItem}", 0);
         }
+        /// <summary>
+        /// Вывод в форму даты , надбавки и штрафов
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DG_NadbavShtraf_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -244,7 +253,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             }
         }
         /// <summary>
-        /// переход к странице расчета
+        /// Переход к странице расчета
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -252,7 +261,11 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
         {
             Manager.MainFrame.Navigate(new Page_raschet());
         }
-
+        /// <summary>
+        /// Внесение изменений в БД 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Btn_Red_Nadbav_Click(object sender, RoutedEventArgs e)
         {
             Procedure.UpdateTable
