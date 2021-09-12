@@ -57,7 +57,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
             DB_Connect.CloseConnection();
         }
         /// <summary>
-        /// Выполнение SQL Запроса к бд
+        /// Выполнение SQL Запроса к БД
         /// </summary>
         /// <param name="sql">SQL команда для выполнения</param>
         /// <returns>Первый столбец первой строки набора результатов или пустая ссылка</returns>
@@ -206,7 +206,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
         }
 
         /// <summary>
-        /// Запрос к бд с получением данных из таблицы (таблиц)
+        /// Запрос к БД с получением данных из таблицы (таблиц)
         /// </summary>
         /// <param name="SQL_Comand">SQL команда для выполнения(типа Select)</param>
         /// <param name="CountColumn">Количество столбцов для возврата</param>

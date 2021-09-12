@@ -22,6 +22,10 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
 	public partial class Page_AddRedAnketa : Page
 	{
 		string IDSotrud;
+		/// <summary>
+		/// Загрузка формы
+		/// </summary>
+		/// <param name="IdSotrud"></param>
 		public Page_AddRedAnketa(string IdSotrud = "")
 		{
 			IDSotrud = IdSotrud;

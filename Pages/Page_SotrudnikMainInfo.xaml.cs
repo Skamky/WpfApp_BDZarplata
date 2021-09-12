@@ -54,7 +54,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
 
         private void LB_Sotrud_id_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Classes.DB.loadDataGrid(DG_Raspisnie, $"SELECT FORMAT([DATE],'d') ,[StatusSotrud] ,[StatusDay] FROM [BD_Zarplata].[bd_zarplta].[graphik_rabot] where [Sotrudnik_idSotrudnik] = {LB_Sotrud_id.SelectedItem}");
+            Classes.DB.loadDataGrid(DG_Raspisnie, $"SELECT FORMAT([DATE],'d') as 'Date' ,[StatusSotrud] ,[StatusDay] FROM [BD_Zarplata].[bd_zarplta].[graphik_rabot] where [Sotrudnik_idSotrudnik] = {LB_Sotrud_id.SelectedItem}");
         }
 
       
@@ -91,13 +91,11 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
 
         private void datepicker_raspisan_LostFocus(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show(DG_Raspisnie.SelectedItem.ToString());
             DG_Raspisnie.SelectedItem = calendar_raspisan.SelectedDate.ToString();
         }
 
         private void BTN_RedRaspisan_Click(object sender, RoutedEventArgs e)
         {
-
             Procedure.UpdateTable
                 (
                 "[BD_Zarplata].[bd_zarplta].[graphik_rabot]"

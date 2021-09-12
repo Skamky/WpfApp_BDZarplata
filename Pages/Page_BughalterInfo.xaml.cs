@@ -40,6 +40,11 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             Manager.MainProgressBar.Visibility = Visibility.Hidden;
 
         }
+        /// <summary>
+        /// Подгруздка справочника льгот и налогов
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TabI_LN_Initialized(object sender, EventArgs e)
         {
             Manager.MainProgressBar.Value = 2;
@@ -215,7 +220,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
 
         private void LB_Sotrud_id2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Classes.DB.loadDataGrid(DG_NadbavShtraf, $"SELECT  FORMAT([Data],'d'),[Nadbav]      ,[Vichet]        FROM [BD_Zarplata].[bd_zarplta].[zp]  Where [Sotrudnik_idSotrudnik]= {LB_Sotrud_id2.SelectedItem}");
+            Classes.DB.loadDataGrid(DG_NadbavShtraf, $"SELECT  FORMAT([Data],'d') as 'Data',[Nadbav]      ,[Vichet]        FROM [BD_Zarplata].[bd_zarplta].[zp]  Where [Sotrudnik_idSotrudnik]= {LB_Sotrud_id2.SelectedItem}");
             CB_Data_Nadbav.Items.Clear();
             DB.LoadDataComboBox(CB_Data_Nadbav, $"SELECT [Data] FROM [BD_Zarplata].[bd_zarplta].[zp]  Where [Sotrudnik_idSotrudnik]= {LB_Sotrud_id2.SelectedItem}", 0);
         }

@@ -53,11 +53,15 @@
                     </Grid.ColumnDefinitions>
                     <ListBox x:Name="LB_Sotrud_FIO" Grid.Column="0" SelectionChanged="LB_Sotrud_FIO_SelectionChanged" ></ListBox>
                     <ListBox x:Name="LB_Sotrud_id" SelectionChanged="LB_Sotrud_id_SelectionChanged" Visibility="Hidden" ></ListBox>
-                    <DataGrid x:Name="DG_Raspisnie" Grid.Column="1" SelectionChanged="DG_Raspisnie_SelectionChanged" >
-                        <!--[StatusSotrud] ,[StatusDay]-->
-                        <!--<DataGridTextColumn Binding="{Binding Path=Column1}" Header="Дата" />
-                        <DataGridTextColumn Binding="{Binding Path=StatusSotrud}" Header="Статус День" />
-                        <DataGridTextColumn Binding="{Binding Path=StatusDay}" Header="Статус Сотрудника" />-->
+                    <DataGrid x:Name="DG_Raspisnie"
+                              AutoGenerateColumns="True"
+                              Grid.Column="1" 
+                              SelectionChanged="DG_Raspisnie_SelectionChanged" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Path=Date}" Header="Дата" />
+                        <DataGridTextColumn Binding="{Binding Path=StatusSotrud}" Header="Статус сотрудника" />
+                        <DataGridTextColumn Binding="{Binding Path=StatusDay}" Header="Статус дня" />
+                        </DataGrid.Columns>
                     </DataGrid>
                     <StackPanel Grid.Column="2">
 

@@ -68,7 +68,6 @@
     <Compile Include="Classes\DG.cs" />
     <Compile Include="Classes\Manager.cs" />
     <Compile Include="Classes\Procedure.cs" />
-    <Compile Include="Classes\Trash.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

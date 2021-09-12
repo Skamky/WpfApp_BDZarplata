@@ -24,7 +24,11 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Попытка подключения к БД 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             Classes.Manager.UpdateLabel("Попытка подключения К БД");

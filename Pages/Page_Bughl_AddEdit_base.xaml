@@ -24,6 +24,6 @@
             <TextBox x:Name="TB_Year" Margin="0,8,0,0" PreviewTextInput="intOnly_PreviewTextInput"></TextBox>
             <TextBox x:Name="TB_Znach" Margin="0,8,0,0" PreviewTextInput="intOnly_PreviewTextInput"></TextBox>
         </StackPanel>
-        <Button x:Name="BtnSave" Content="Сохранить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="75" Click="BtnSave_Click"/>
+        <Button x:Name="BtnSave" Content="Сохранить" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="1" Click="BtnSave_Click"/>
     </Grid>
 </Page>

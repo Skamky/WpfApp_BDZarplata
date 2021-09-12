@@ -50,7 +50,15 @@
                     </Grid.ColumnDefinitions>
                     <ListBox x:Name="LB_Sotrud_FIO2" Grid.Column="0" SelectionChanged="LB_Sotrud_FIO2_SelectionChanged"></ListBox>
                     <ListBox x:Name="LB_Sotrud_id2" SelectionChanged="LB_Sotrud_id2_SelectionChanged" Visibility="Hidden"></ListBox>
-                    <DataGrid x:Name="DG_NadbavShtraf" Grid.Column="1" SelectionChanged="DG_NadbavShtraf_SelectionChanged">
+                    <DataGrid x:Name="DG_NadbavShtraf"
+                               AutoGenerateColumns="True"
+                               Grid.Column="1" 
+                               SelectionChanged="DG_NadbavShtraf_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Path=Data}" Header="Дата выплаты"/>
+                            <DataGridTextColumn Binding="{Binding Path=Nadbav}" Header="Сумма надбавок"/>
+                            <DataGridTextColumn Binding="{Binding Path=Vichet}" Header="Сумма штрафов"/>
+                        </DataGrid.Columns>
 
                     </DataGrid>
 

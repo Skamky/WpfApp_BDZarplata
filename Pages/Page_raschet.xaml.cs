@@ -89,7 +89,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
                 {
                     OkladMes += DnevDohod;
                 }
-                //начисление зп за выход выходной
+                //начисление ЗП за выход выходной
                 else if (statusDay.LastIndexOf("выходной") != -1 && statusSotrud.LastIndexOf("вышел") != -1)
                 {
                     OkladMes += DnevDohod*2;
@@ -125,7 +125,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             L_Ndfl.Content = NdFl;
             //Итоговая зарплата на руки работнику
              itogZarplata = FactDohod - NdFl;
-            //налоги  уплачеваемые работадателем
+            //налоги  уплачиваемые работодателем
             L_FCC.Content =  (FactDohod / 100 * FCC_stavka);
             L_FOMC.Content = (FactDohod / 100 * FOMC_stavka);
             L_pfr.Content = (FactDohod / 100 * PFR_stavka);
@@ -152,7 +152,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             sheet.Range["A1", "B2"].HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
             sheet.Cells.Font.Name = "Times New Roman"; //задание шрифта
             sheet.Cells.Font.Size = "12"; 
-            //sheet.Rows[x].RowHeight = 40;
+           
             sheet.Columns[1].ColumnWidth = 30;
             sheet.Columns[6].ColumnWidth = 30;
             sheet.Cells.Range["A1", "F4"].Font.Bold = true;

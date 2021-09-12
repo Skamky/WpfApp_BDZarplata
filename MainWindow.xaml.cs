@@ -35,7 +35,16 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.GoBack();
+            try
+            {
+                Manager.MainFrame.GoBack();
+            }
+            catch (Exception)
+            {
+               
+                MessageBox.Show("Это первая страница!");
+            }
+           
         }
     }
 }

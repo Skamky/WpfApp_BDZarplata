@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+//отладочная страница  для быстрого доступа к другим страницам
 namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
 {
     /// <summary>
@@ -20,6 +20,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
     /// </summary>
     public partial class Page_SelectPage : Page
     {
+       
         public Page_SelectPage()
         {
             InitializeComponent();
