@@ -63,7 +63,11 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             }
             else Classes.Manager.UpdateLabel("Ошибка");
         }
-
+        /// <summary>
+        /// Переключение поля для ввода адреса
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CB_IPPC_Localhost_Click(object sender, RoutedEventArgs e)
         {
             if (CB_IPPC_Localhost.IsChecked == true)
@@ -77,7 +81,11 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
                 TB_IpPc.IsEnabled = true;
             }
         }
-
+        /// <summary>
+        /// Переключение поля для ввода названия БД
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CB_BD_NAmeDef_Click(object sender, RoutedEventArgs e)
         {
             if (CB_BD_NAmeDef.IsChecked==true)

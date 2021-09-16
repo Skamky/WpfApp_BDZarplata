@@ -30,7 +30,11 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             DB.LoadDataComboBox(CB_StatusDay, "SELECT DISTINCT [StatusDay] FROM[BD_Zarplata].[bd_zarplta].[graphik_rabot]", 0);
             DB.LoadDataComboBox(CB_StatusSotrud, "SELECT DISTINCT [StatusSotrud] FROM[BD_Zarplata].[bd_zarplta].[graphik_rabot]", 0);
         }
-
+        /// <summary>
+        /// Переход в режим редактирования
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Btn_Redactir_Click(object sender, RoutedEventArgs e)
         {
             string sotrudid = Classes.DG.GetSelectCell(DG_Sotrud_Anketa, 0);
@@ -41,34 +45,58 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
                     break;
             }
         }
-
+        /// <summary>
+        /// сохранение измененных полей таблицы БД
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Btn_Save_Click(object sender, RoutedEventArgs e)
         {
           
         }
-
+        /// <summary>
+        /// Сопоставление ФИО и ID сотрудника
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LB_Sotrud_FIO_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             LB_Sotrud_id.SelectedIndex = LB_Sotrud_FIO.SelectedIndex;
         }
-
+        /// <summary>
+        /// Подгрузка данных о Расписании выбранного сотрудника
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LB_Sotrud_id_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Classes.DB.loadDataGrid(DG_Raspisnie, $"SELECT FORMAT([DATE],'d') as 'Date' ,[StatusSotrud] ,[StatusDay] FROM [BD_Zarplata].[bd_zarplta].[graphik_rabot] where [Sotrudnik_idSotrudnik] = {LB_Sotrud_id.SelectedItem}");
         }
 
-      
 
+        /// <summary>
+        /// Переход в режим редактирования
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DG_Sotrud_Anketa_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             Btn_Redactir_Click(sender, e);
         }
-
+        /// <summary>
+        /// Переход в режим добавления нового сотрудника
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Btn_Add_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new Page_AddRedAnketa());
         }
-
+        /// <summary>
+        /// Подгрузка данных о выбранном дне
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DG_Raspisnie_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
@@ -89,11 +117,12 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             }
         }
 
-        private void datepicker_raspisan_LostFocus(object sender, RoutedEventArgs e)
-        {
-            DG_Raspisnie.SelectedItem = calendar_raspisan.SelectedDate.ToString();
-        }
-
+        
+        /// <summary>
+        /// сохранение измененных полей таблицы БД
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BTN_RedRaspisan_Click(object sender, RoutedEventArgs e)
         {
             Procedure.UpdateTable

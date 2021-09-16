@@ -133,6 +133,11 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             BTN_Export.IsEnabled = true;
 
         }
+        /// <summary>
+        /// Экспорт в Эксель
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BTN_Export_Click(object sender, RoutedEventArgs e)
         {
             Excel.Application ex = new Microsoft.Office.Interop.Excel.Application();
@@ -211,11 +216,20 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             ex.Visible = true;
 
         }
+        /// <summary>
+        /// сопоставление ФИО и ID сотрудника
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CB_SotrudID_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             CB_FIO.SelectedIndex = CB_SotrudID.SelectedIndex;
         }
-
+        /// <summary>
+        /// подгрузка информации о сотруднике
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CB_FIO_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             BTN_Export.IsEnabled = false;
@@ -228,7 +242,11 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             L_Oklad.Content = DB.queryScalar("SELECT   [Oklad]  FROM [BD_Zarplata].[bd_zarplta].[doljnost] where [idDoljnost] =" + L_IdDoljnost.Content);
             TRavmat_stavka =Convert.ToDouble( DB.queryScalar("SELECT   [Travmat]  FROM [BD_Zarplata].[bd_zarplta].[doljnost] where [idDoljnost] =" + L_IdDoljnost.Content));
         }
-
+        /// <summary>
+        /// Изменение даты на календаре
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CB_Date_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             calendar.DisplayDate = Convert.ToDateTime(CB_Date.SelectedItem);
