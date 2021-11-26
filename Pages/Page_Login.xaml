@@ -12,6 +12,8 @@
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <Label>Табельный номер сотрудника</Label>
             <TextBox x:Name="TB_idSotrudnik"></TextBox>
+            <Label>Пароль</Label>
+            <TextBox x:Name="TB_Password"></TextBox>
             <Label>Адрес для подключения</Label>
             <TextBox x:Name="TB_IpPc" Text="localhost" IsEnabled="False"></TextBox>
             <CheckBox x:Name="CB_IPPC_Localhost" IsChecked="True" Click="CB_IPPC_Localhost_Click">Локальная База данных</CheckBox>

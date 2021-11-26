@@ -39,7 +39,7 @@
 
                     </DataGrid.Columns>
 
-                </DataGrid>   
+                </DataGrid>
             </TabItem>
             <TabItem Header="Штрафы и надбавки">
                 <Grid>
@@ -79,7 +79,7 @@
                 <Grid >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="62"></ColumnDefinition>
-                        <ColumnDefinition Width="225"/>
+                        <ColumnDefinition Width="320"/>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Grid.ColumnSpan="2">
@@ -94,15 +94,15 @@
                         <Label>МРОТ</Label>
                     </StackPanel>
                     <StackPanel Grid.Column="2">
-                        <TextBox x:Name="TB_NDFL" Height="20" Margin="0,6,0,0" PreviewTextInput="floatOnly_PreviewTextInput"></TextBox>
-                        <TextBox x:Name="TB_PFR" Height="20" Margin="0,6,0,0" PreviewTextInput="floatOnly_PreviewTextInput"></TextBox>
-                        <TextBox x:Name="TB_FCC" Height="20" Margin="0,6,0,0" PreviewTextInput="floatOnly_PreviewTextInput"></TextBox>
-                        <TextBox x:Name="TB_FOMC" Height="20" Margin="0,6,0,0" PreviewTextInput="floatOnly_PreviewTextInput"></TextBox>
-                        <TextBox x:Name="TB_Kid1" Height="20" Margin="0,6,0,0" PreviewTextInput="intOnly_PreviewTextInput"></TextBox>
-                        <TextBox x:Name="TB_Kid3" Height="20" Margin="0,6,0,0" PreviewTextInput="intOnly_PreviewTextInput"></TextBox>
-                        <TextBox x:Name="TB_KidInvalid" Height="20" Margin="0,6,0,0" PreviewTextInput="intOnly_PreviewTextInput"></TextBox>
-                        <TextBox x:Name="TB_KidInvalid_opek" Height="20" Margin="0,6,0,0" PreviewTextInput="intOnly_PreviewTextInput"></TextBox>
-                        <TextBox x:Name="TB_Mrot" Height="20" Margin="0,6,0,0" PreviewTextInput="intOnly_PreviewTextInput" ></TextBox>
+                        <TextBox x:Name="TB_NDFL" Height="25" Margin="0,6,0,0" PreviewTextInput="floatOnly_PreviewTextInput"></TextBox>
+                        <TextBox x:Name="TB_PFR" Height="25" Margin="0,6,0,0" PreviewTextInput="floatOnly_PreviewTextInput"></TextBox>
+                        <TextBox x:Name="TB_FCC" Height="25" Margin="0,6,0,0" PreviewTextInput="floatOnly_PreviewTextInput"></TextBox>
+                        <TextBox x:Name="TB_FOMC" Height="25" Margin="0,6,0,0" PreviewTextInput="floatOnly_PreviewTextInput"></TextBox>
+                        <TextBox x:Name="TB_Kid1" Height="25" Margin="0,6,0,0" PreviewTextInput="intOnly_PreviewTextInput"></TextBox>
+                        <TextBox x:Name="TB_Kid3" Height="25" Margin="0,6,0,0" PreviewTextInput="intOnly_PreviewTextInput"></TextBox>
+                        <TextBox x:Name="TB_KidInvalid" Height="25" Margin="0,6,0,0" PreviewTextInput="intOnly_PreviewTextInput"></TextBox>
+                        <TextBox x:Name="TB_KidInvalid_opek" Height="25" Margin="0,6,0,0" PreviewTextInput="intOnly_PreviewTextInput"></TextBox>
+                        <TextBox x:Name="TB_Mrot" Height="25" Margin="0,6,0,0" PreviewTextInput="intOnly_PreviewTextInput" ></TextBox>
                     </StackPanel>
                 </Grid>
             </TabItem >
