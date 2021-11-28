@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WpfApp_КурсоваяРабота2021_BDZarplata.App" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WpfApp_КурсоваяРабота2021_BDZarplata.MainWindow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WpfApp_КурсоваяРабота2021_BDZarplata.Classes.DB">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAQIAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAgA=</HashCode>
+      <FileName>Classes\DB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WpfApp_КурсоваяРабота2021_BDZarplata.Classes.DB_Connect" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAABAAAYAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Classes\DB_Connect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WpfApp_КурсоваяРабота2021_BDZarplata.Classes.DG" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\DG.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WpfApp_КурсоваяРабота2021_BDZarplata.Classes.Manager" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAQAAAACAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WpfApp_КурсоваяРабота2021_BDZarplata.Classes.Procedure" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Classes\Procedure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WpfApp_КурсоваяРабота2021_BDZarplata.Pages.Page_AddRedAnketa" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAACAAAAAAAAAAEAAAAAIAAQAAAAAAAAA=</HashCode>
+      <FileName>Pages\Page_AddRedAnketa.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WpfApp_КурсоваяРабота2021_BDZarplata.Pages.Page_BughalterInfo" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQREAAAAAACAiAAAAAIAAAAAAAAQEAAAAQCIAAAEACA=</HashCode>
+      <FileName>Pages\Page_BughalterInfo.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WpfApp_КурсоваяРабота2021_BDZarplata.Pages.Page_Bughl_AddEdit_base" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Pages\Page_Bughl_AddEdit_base.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WpfApp_КурсоваяРабота2021_BDZarplata.Pages.Page_BuhgaltAddEdit_Oklad" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAACAAAAAEAAAAQAAAAAAAgA=</HashCode>
+      <FileName>Pages\Page_BuhgaltAddEdit_Oklad.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WpfApp_КурсоваяРабота2021_BDZarplata.Pages.Page_Login" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Pages\Page_Login.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WpfApp_КурсоваяРабота2021_BDZarplata.Pages.Page_raschet" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEAggAIIAAAAIAAQIAEAAQgAAAEAIAAJBAAAAAAABAA=</HashCode>
+      <FileName>Pages\Page_raschet.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WpfApp_КурсоваяРабота2021_BDZarplata.Pages.Page_SelectPage" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIQAAAAAIAAAAAAA=</HashCode>
+      <FileName>Pages\Page_SelectPage.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WpfApp_КурсоваяРабота2021_BDZarplata.Pages.Page_SotrudnikMainInfo" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gAAEAAAAUAAACEAAAAAAAAACAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Pages\Page_SotrudnikMainInfo.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="WpfApp_КурсоваяРабота2021_BDZarplata.Properties.Resources" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WpfApp_КурсоваяРабота2021_BDZarplata.Properties.Settings" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
