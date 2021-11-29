@@ -29,7 +29,7 @@
         <TabControl Grid.Row="1" x:Name="TabC_Main">
             <TabItem x:Name="TabI_OkladSotrud" Header="Оклады сотрудников" GotFocus="TabI_OkladSotrud_GotFocus" >
                 <DataGrid x:Name="DG_SotridnikOklad" 
-                           AutoGenerateColumns="True"
+                           AutoGenerateColumns="False"
                            SelectionChanged="DG_SotridnikOklad_SelectionChanged"  MouseDoubleClick="DG_SotridnikOklad_MouseDoubleClick"  >
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Path=idDoljnost}" Header="№"/>
@@ -51,7 +51,7 @@
                     <ListBox x:Name="LB_Sotrud_FIO2" Grid.Column="0" SelectionChanged="LB_Sotrud_FIO2_SelectionChanged"></ListBox>
                     <ListBox x:Name="LB_Sotrud_id2" SelectionChanged="LB_Sotrud_id2_SelectionChanged" Visibility="Hidden"></ListBox>
                     <DataGrid x:Name="DG_NadbavShtraf"
-                               AutoGenerateColumns="True"
+                               AutoGenerateColumns="False"
                                Grid.Column="1" 
                                SelectionChanged="DG_NadbavShtraf_SelectionChanged">
                         <DataGrid.Columns>
@@ -107,7 +107,7 @@
                 </Grid>
             </TabItem >
             <TabItem x:Name="TabI_Base" Header="Предельная база для исчисления страховых взносов" GotFocus="TabI_Base_GotFocus">
-                <DataGrid x:Name="DG_Base" AutoGenerateColumns="True">
+                <DataGrid x:Name="DG_Base" AutoGenerateColumns="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Path=Y}" Header="Год"/>
                         <DataGridTextColumn Binding="{Binding Path=Z}" Header="Значение"/>
