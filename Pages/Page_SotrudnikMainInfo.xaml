@@ -54,7 +54,7 @@
                     <ListBox x:Name="LB_Sotrud_FIO" Grid.Column="0" SelectionChanged="LB_Sotrud_FIO_SelectionChanged" ></ListBox>
                     <ListBox x:Name="LB_Sotrud_id" SelectionChanged="LB_Sotrud_id_SelectionChanged" Visibility="Hidden" ></ListBox>
                     <DataGrid x:Name="DG_Raspisnie"
-                              AutoGenerateColumns="True"
+                              AutoGenerateColumns="False"
                               Grid.Column="1" 
                               SelectionChanged="DG_Raspisnie_SelectionChanged" >
                         <DataGrid.Columns>

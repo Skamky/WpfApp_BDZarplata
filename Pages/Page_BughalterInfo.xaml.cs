@@ -83,7 +83,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
                     TabI_LN_Initialized(null, null);
                     break;
                 case 2:
-                    MessageBox.Show("выбрана 3 вкладка");
+                    MessageBox.Show("Изменения успешно сохранены!");
                     break;
                 default:
                     break;
@@ -275,6 +275,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
                 , new List<string>() {  TB_Vichet.Text , TB_Nadbav.Text }
                 , $"where[Sotrudnik_idSotrudnik] = {LB_Sotrud_id2.SelectedItem} AND [Data] = '{Calendar2.SelectedDate}'"
                 );
+            MessageBox.Show("Изменения сохранены!");
             Classes.DB.loadDataGrid(DG_NadbavShtraf, $"SELECT  FORMAT([Data],'d'),[Nadbav]      ,[Vichet]        FROM [BD_Zarplata].[bd_zarplta].[zp]  Where [Sotrudnik_idSotrudnik]= {LB_Sotrud_id2.SelectedItem}");
         }
     }
