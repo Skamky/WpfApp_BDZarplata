@@ -20,10 +20,10 @@
 
 
         <Menu>
-            <Button x:Name="Btn_Add" Cursor="Hand" Content="Добавить" Visibility="Hidden"/>
-            <Button x:Name="Btn_Redactir" Cursor="Hand" Content="Изменить" Visibility="Hidden" Click="Btn_Redactir_Click"/>
-            <Button x:Name="Btn_delete" Cursor="Hand" Content="Удалить" Visibility="Hidden"/>
-            <Button x:Name="Btn_Save" Cursor="Hand" Content="Сохранить" Visibility="Hidden" Click="Btn_Save_Click"/>
+            <Button x:Name="Btn_Add" Cursor="Hand" Content="Добавить" Visibility="Collapsed"/>
+            <Button x:Name="Btn_Redactir" Cursor="Hand" Content="Изменить" Visibility="Collapsed" Click="Btn_Redactir_Click"/>
+            <Button x:Name="Btn_delete" Cursor="Hand" Content="Удалить" Visibility="Collapsed"/>
+            <Button x:Name="Btn_Save" Cursor="Hand" Content="Сохранить" Visibility="Collapsed" Click="Btn_Save_Click"/>
             <Button x:Name="Btn_Raschet" Cursor="Hand" Content="Перейти к Созданию Расчётного листа..." Click="Btn_Raschet_Click"></Button>
         </Menu>
         <TabControl Grid.Row="1" x:Name="TabC_Main">
@@ -45,11 +45,11 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <ListBox x:Name="LB_Sotrud_FIO2" Grid.Column="0" SelectionChanged="LB_Sotrud_FIO2_SelectionChanged"></ListBox>
-                    <ListBox x:Name="LB_Sotrud_id2" SelectionChanged="LB_Sotrud_id2_SelectionChanged" Visibility="Hidden"></ListBox>
+                    <ListBox x:Name="LB_Sotrud_id2" SelectionChanged="LB_Sotrud_id2_SelectionChanged" Visibility="Collapsed"></ListBox>
                     <DataGrid x:Name="DG_NadbavShtraf"
                                AutoGenerateColumns="False"
                                Grid.Column="1" 

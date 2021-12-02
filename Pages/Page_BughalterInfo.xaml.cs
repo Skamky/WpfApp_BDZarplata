@@ -37,7 +37,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
 
             Classes.DB.LoadDataListBox(LB_Sotrud_FIO2, "SELECT  [idSotrudnik],[full_name]  FROM [BD_Zarplata].[bd_zarplta].[sotrudnik]", 1);
             Classes.DB.LoadDataListBox(LB_Sotrud_id2, "SELECT [idSotrudnik]  ,[full_name] FROM [BD_Zarplata].[bd_zarplta].[sotrudnik]", 0);
-            Manager.MainProgressBar.Visibility = Visibility.Hidden;
+            Manager.MainProgressBar.Visibility = Visibility.Collapsed;
 
         }
         /// <summary>
@@ -103,6 +103,9 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
                     Manager.MainFrame.Navigate(new Pages.Page_BuhgaltAddEdit_Oklad(CellID));
                     break;
                 case 2:
+                    break;
+                    case 3 :
+                    Manager.MainFrame.Navigate(new Pages.Page_Bughl_AddEdit_base());
                     break;
                 default:
                     break;
@@ -184,10 +187,10 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
         /// <param name="e"></param>
         private void TabI_OkladSotrud_GotFocus(object sender, RoutedEventArgs e)
         {
-            Btn_Add.Visibility = Visibility.Hidden;
-            Btn_delete.Visibility = Visibility.Hidden;
-            if(Select0Items) Btn_Redactir.Visibility = Visibility.Hidden;
-            Btn_Save.Visibility = Visibility.Hidden;
+            Btn_Add.Visibility = Visibility.Collapsed;
+            Btn_delete.Visibility = Visibility.Collapsed;
+            if(Select0Items) Btn_Redactir.Visibility = Visibility.Collapsed;
+            Btn_Save.Visibility = Visibility.Collapsed;
         }
         /// <summary>
         /// Смена видимости кнопок , при выборе вкладки
@@ -199,7 +202,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             Btn_Add.Visibility = Visibility.Visible;
             Btn_delete.Visibility = Visibility.Visible;
             Btn_Redactir.Visibility = Visibility.Visible;
-            Btn_Save.Visibility = Visibility.Hidden;
+            Btn_Save.Visibility = Visibility.Collapsed;
         }
         /// <summary>
         /// Смена видимости кнопок , при выборе вкладки
@@ -208,9 +211,9 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
         /// <param name="e"></param>
         private void TabI_LN_GotFocus(object sender, RoutedEventArgs e)
         {
-            Btn_Add.Visibility = Visibility.Hidden;
-            Btn_delete.Visibility = Visibility.Hidden;
-            Btn_Redactir.Visibility = Visibility.Hidden;
+            Btn_Add.Visibility = Visibility.Collapsed;
+            Btn_delete.Visibility = Visibility.Collapsed;
+            Btn_Redactir.Visibility = Visibility.Collapsed;
             Btn_Save.Visibility = Visibility.Visible;
         }
         private void LB_Sotrud_FIO2_SelectionChanged(object sender, SelectionChangedEventArgs e)

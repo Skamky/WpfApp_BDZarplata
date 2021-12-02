@@ -8,9 +8,9 @@
         Title="BDZArlata" Height="600" Width="1500" MinWidth="800" MinHeight="600" FontSize="16">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="310"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -37,6 +37,6 @@
         <!--вспомогательные информационные элементы-->
         <Label x:Name="LabelStatus1" Grid.Row="2" Foreground="#FFFFFF66" Content="Готов." />
         <ProgressBar x:Name="ProgressBarStatus"  Grid.Row="2" Grid.Column="0" Margin="0.4,34.6,-0.4,0" Visibility="Hidden"/>
-        <Button x:Name="BtnBack" Grid.Row="2" Grid.Column="2" Click="BtnBack_Click"> Назад</Button>
+        <Button x:Name="BtnBack" Grid.Row="2" Grid.Column="2" Click="BtnBack_Click">Назад</Button>
     </Grid>
 </Window>

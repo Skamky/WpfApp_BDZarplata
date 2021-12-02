@@ -21,9 +21,9 @@
         </Grid.RowDefinitions>
         <Menu>
             <Button x:Name="Btn_Add" Cursor="Hand" Content="Добавить" Visibility="Visible" Click="Btn_Add_Click"/>
-            <Button x:Name="Btn_Redactir" Cursor="Hand" Content="Изменить" Visibility="Hidden" Click="Btn_Redactir_Click"/>
-            <Button x:Name="Btn_delete" Cursor="Hand" Content="Удалить" Visibility="Hidden"/>
-            <Button x:Name="Btn_Save" Cursor="Hand" Content="Сохранить" Visibility="Hidden" Click="Btn_Save_Click"/>
+            <Button x:Name="Btn_Redactir" Cursor="Hand" Content="Изменить" Visibility="Collapsed" Click="Btn_Redactir_Click"/>
+            <Button x:Name="Btn_delete" Cursor="Hand" Content="Удалить" Visibility="Collapsed"/>
+            <Button x:Name="Btn_Save" Cursor="Hand" Content="Сохранить" Visibility="Collapsed" Click="Btn_Save_Click"/>
         </Menu>
         <TabControl Grid.Row="1" x:Name="TabC_Main">
             <TabItem Header="Основные данные сотрудников">

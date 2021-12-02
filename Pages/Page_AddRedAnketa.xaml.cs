@@ -92,7 +92,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
 			MessageBoxResult Result_SaveOrRed;
 			if (TB_FIO.Text.Length < 2)
 			{
-				MessageBox.Show("Ошибка! Поле ФИО обязательно для заполнения");
+				MessageBox.Show("Ошибка! Поле ФИО обязательно для заполнения","Ошибка",MessageBoxButton.OK,MessageBoxImage.Error);
 				return;
 			}
 			if (TB_FamilyStatus.Text != "")
