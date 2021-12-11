@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp_КурсоваяРабота2021_BDZarplata.Classes;
+using BDZarplata.Classes;
 using Excel = Microsoft.Office.Interop.Excel;
-namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
+namespace BDZarplata.Pages
 {
     /// <summary>
     /// Логика взаимодействия для Page_raschet.xaml

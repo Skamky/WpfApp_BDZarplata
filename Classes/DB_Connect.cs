@@ -5,7 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Windows;
 using System.IO;
-namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
+namespace BDZarplata.Classes
 {
    public class DB_Connect
     {

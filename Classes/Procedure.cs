@@ -7,7 +7,7 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Windows;
 
-namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
+namespace BDZarplata.Classes
 {
     class Procedure
     {

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 //отладочная страница  для быстрого доступа к другим страницам
-namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
+namespace BDZarplata.Pages
 {
     /// <summary>
     /// Логика взаимодействия для Page_SelectPage.xaml

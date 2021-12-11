@@ -1,9 +1,9 @@
-﻿<Page x:Class="WpfApp_КурсоваяРабота2021_BDZarplata.Pages.Page_SotrudnikMainInfo"
+﻿<Page x:Class="BDZarplata.Pages.Page_SotrudnikMainInfo"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WpfApp_КурсоваяРабота2021_BDZarplata.Pages"
+      xmlns:local="clr-namespace:BDZarplata.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PageSotrudnikMainInfo">
@@ -26,7 +26,7 @@
             <Button x:Name="Btn_Save" Cursor="Hand" Content="Сохранить" Visibility="Collapsed" Click="Btn_Save_Click"/>
         </Menu>
         <TabControl Grid.Row="1" x:Name="TabC_Main">
-            <TabItem Header="Основные данные сотрудников">
+            <TabItem x:Name="TabI_MainData" Header="Основные данные сотрудников" GotFocus="TabI_MainData_GotFocus">
                 <!--"SELECT [idSotrudnik], 
                 full_name , t2.title, family_status, num_zd_kids,num_invalid_kids, opeka, SpecStatus, Staj FROM[bd_zarplta].[sotrudnik] t1 LEFT JOIN bd_zarplta.doljnost t2 ON t1.idDoljnost = t2.idDoljnost");-->
                 <DataGrid x:Name="DG_Sotrud_Anketa" Grid.ColumnSpan="2" Grid.RowSpan="2" MouseDoubleClick="DG_Sotrud_Anketa_MouseDoubleClick" AutoGenerateColumns="False">
@@ -44,7 +44,7 @@
                 </DataGrid>
             </TabItem>
 
-            <TabItem Header="Расписание">
+            <TabItem Header="Расписание" GotFocus="TabItem_GotFocus">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>

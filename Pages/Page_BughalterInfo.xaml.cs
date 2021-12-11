@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp_КурсоваяРабота2021_BDZarplata.Classes;
+using BDZarplata.Classes;
 
-namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
+namespace BDZarplata.Pages
 {
     /// <summary>
     /// Логика взаимодействия для Page_BughalterInfo.xaml
@@ -71,21 +71,23 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             switch (TabC_Main.SelectedIndex)
             {
                 case 0:
-
                     break;
-                case 1:
+                case 2:
+                    Console.WriteLine(2);
                     if (MessageBoxResult.OK == MessageBox.Show("Сохранить Изменения? \n Ок -сохранить \n Отмена - Отменить все изменения", "Запрос на сохранение", MessageBoxButton.OKCancel))
                     {
                         List<string> columnName = new List<string>() { "[NDFL]", "[PFR]", "[FCC]", "[FOMC]", "[kid1]", "[kid3]", "[invalid]", "[invlid_o]", "[MROT]" };
                         List<string> MasData = new List<string>() { TB_NDFL.Text.Replace(',', '.'), TB_PFR.Text.Replace(',', '.'), TB_FCC.Text.Replace(',', '.'), TB_FOMC.Text.Replace(',', '.'), TB_Kid1.Text, TB_Kid3.Text, TB_KidInvalid.Text, TB_KidInvalid_opek.Text, TB_Mrot.Text };
                         Classes.Procedure.UpdateTable("[BD_Zarplata].[bd_zarplta].[h]", columnName, MasData, "");
+                        MessageBox.Show("Изменения успешно сохранены!");
                     }
                     TabI_LN_Initialized(null, null);
                     break;
-                case 2:
-                    MessageBox.Show("Изменения успешно сохранены!");
+                case 1:
+                    Btn_Red_Nadbav_Click(sender, e);
                     break;
                 default:
+                    Console.WriteLine("Дефульт");
                     break;
 
             }
@@ -105,12 +107,46 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
                 case 2:
                     break;
                     case 3 :
-                    Manager.MainFrame.Navigate(new Pages.Page_Bughl_AddEdit_base());
+                    string Year = Classes.DG.GetSelectCell(DG_Base, 0);
+                    string Znach = Classes.DG.GetSelectCell(DG_Base,1);
+                    Manager.MainFrame.Navigate(new Pages.Page_Bughl_AddEdit_base(Year,Znach));
                     break;
                 default:
                     break;
             }
+        }
+        private void Btn_Add_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new Pages.Page_Bughl_AddEdit_base());
+        }
+        /// <summary>
+        /// Удаление записи из base
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+         private void Btn_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            string YEAR = Classes.DG.GetSelectCell(DG_Base, 0);
+           
+            if (YEAR == "")
+            {
+                 MessageBox.Show("Объект для удаления не выбран. ", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
+              
             }
+            else if (MessageBoxResult.Yes == MessageBox.Show("Вы собираетесь безвозвратно удалить запись\n Вы уверены?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Warning))
+            {
+                //ТК в БД прописано каскадное удаление ,удаляем лишь из родительской таблицы 
+                string comand = "DELETE FROM [bd_zarplta].[base] WHERE [Y] =" + YEAR;
+
+                if (Classes.DB.queryData(comand) != -1)
+                {
+                    Classes.Manager.UpdateLabel("Готово.");
+                    MessageBox.Show("Операция успешна выполнена!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                    DB.loadDataGrid(DG_Base, "SELECT *  FROM [BD_Zarplata].[bd_zarplta].[base]");
+                }
+                else MessageBox.Show("Произошла ошибка при удалении");
+            }
+        }
         private void intOnly_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             //узнаем Кто вызвал событие 
@@ -215,6 +251,16 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
             Btn_delete.Visibility = Visibility.Collapsed;
             Btn_Redactir.Visibility = Visibility.Collapsed;
             Btn_Save.Visibility = Visibility.Visible;
+            Btn_Save.IsEnabled = true;
+
+        }
+        private void TabI_Nadbav_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Btn_Add.Visibility = Visibility.Collapsed;
+            Btn_delete.Visibility = Visibility.Collapsed;
+            Btn_Redactir.Visibility = Visibility.Collapsed;
+            Btn_Save.Visibility = Visibility.Visible;
+            Btn_Save.IsEnabled = false;
         }
         private void LB_Sotrud_FIO2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -245,6 +291,8 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
                 TB_Nadbav.Text = DG.GetSelectCell(DG_NadbavShtraf, 1);
                 TB_Vichet.Text = DG.GetSelectCell(DG_NadbavShtraf, 2);
                 Btn_Red_Nadbav.IsEnabled = true;
+                Btn_Save.IsEnabled = true;
+
             }
             catch
             {
@@ -253,6 +301,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
                 TB_Nadbav.Text = "";
                 TB_Vichet.Text="";
                 Btn_Red_Nadbav.IsEnabled = false;
+                Btn_Save.IsEnabled = false;
             }
         }
         /// <summary>
@@ -271,6 +320,8 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
         /// <param name="e"></param>
         private void Btn_Red_Nadbav_Click(object sender, RoutedEventArgs e)
         {
+            
+            
             Procedure.UpdateTable
                 (
                 "[BD_Zarplata].[bd_zarplta].[zp]"
@@ -278,8 +329,15 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
                 , new List<string>() {  TB_Vichet.Text , TB_Nadbav.Text }
                 , $"where[Sotrudnik_idSotrudnik] = {LB_Sotrud_id2.SelectedItem} AND [Data] = '{Calendar2.SelectedDate}'"
                 );
-            MessageBox.Show("Изменения сохранены!");
-            Classes.DB.loadDataGrid(DG_NadbavShtraf, $"SELECT  FORMAT([Data],'d'),[Nadbav]      ,[Vichet]        FROM [BD_Zarplata].[bd_zarplta].[zp]  Where [Sotrudnik_idSotrudnik]= {LB_Sotrud_id2.SelectedItem}");
+                Classes.DB.loadDataGrid(DG_NadbavShtraf, $"SELECT  FORMAT([Data],'d'),[Nadbav]      ,[Vichet]        FROM [BD_Zarplata].[bd_zarplta].[zp]  Where [Sotrudnik_idSotrudnik]= {LB_Sotrud_id2.SelectedItem}");
+           
+           ; 
+          
+                MessageBox.Show("Изменения сохранены!");
+
+            
         }
+
+     
     }
 }

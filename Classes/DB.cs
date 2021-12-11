@@ -7,7 +7,7 @@ using System.Data;
 using System.Windows;
 using System.Data.SqlClient;
 
-namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
+namespace BDZarplata.Classes
 {
     class DB
     {
@@ -73,7 +73,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Classes
                 Manager.UpdateLabel("Запрос успешно выполнен!");
                 
             }
-            catch (Exception ex) { MessageBox.Show("Произошла Ошибка \n" + ex.Message + "\n SQL Запрос: \n" + sql, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error); }
+            catch (Exception ex) { MessageBox.Show("Произошла Ошибка при обработке SQL запроса \n" + ex.Message + "\n SQL Запрос: \n" + sql, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error); }
             finally { DB_Connect.CloseConnection(); }
             if (sqlValue!=null) return sqlValue;
             else 

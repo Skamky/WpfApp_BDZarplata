@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 
-namespace WpfApp_КурсоваяРабота2021_BDZarplata.Properties
+namespace BDZarplata.Properties
 {
     /// <summary>
     ///   Класс ресурсов со строгим типом для поиска локализованных строк и пр.
@@ -43,7 +43,7 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Properties
             {
                 if ((resourceMan == null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WpfApp_КурсоваяРабота2021_BDZarplata.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BDZarplata.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

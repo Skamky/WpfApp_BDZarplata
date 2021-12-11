@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace WpfApp_КурсоваяРабота2021_BDZarplata
+namespace BDZarplata
 {
     /// <summary>
     /// Логика взаимодействия для App.xaml

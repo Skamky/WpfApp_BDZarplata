@@ -12,9 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp_КурсоваяРабота2021_BDZarplata.Classes;
+using BDZarplata.Classes;
 
-namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
+namespace BDZarplata.Pages
 {
     /// <summary>
     /// Логика взаимодействия для Page_SotrudnikMainInfo.xaml
@@ -134,6 +134,16 @@ namespace WpfApp_КурсоваяРабота2021_BDZarplata.Pages
                 );
             Classes.DB.loadDataGrid(DG_Raspisnie, $"SELECT FORMAT([DATE],'d') ,[StatusSotrud] ,[StatusDay] FROM [BD_Zarplata].[bd_zarplta].[graphik_rabot] where [Sotrudnik_idSotrudnik] = {LB_Sotrud_id.SelectedItem}");
             MessageBox.Show("Успешно Обновленно!");
+        }
+
+        private void TabI_MainData_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Btn_Add.Visibility = Visibility.Visible;
+        }
+
+        private void TabItem_GotFocus(object sender, RoutedEventArgs e)
+        {
+            Btn_Add.Visibility = Visibility.Hidden;
         }
     }
 }

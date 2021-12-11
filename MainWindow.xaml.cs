@@ -12,10 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp_КурсоваяРабота2021_BDZarplata.Pages;
-using WpfApp_КурсоваяРабота2021_BDZarplata.Classes;
+using BDZarplata.Pages;
+using BDZarplata.Classes;
 
-namespace WpfApp_КурсоваяРабота2021_BDZarplata
+namespace BDZarplata
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
