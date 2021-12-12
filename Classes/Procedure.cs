@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.Sql;
-using System.Data.SqlClient;
+﻿using System.Collections.Generic;
 using System.Windows;
 
 namespace BDZarplata.Classes
@@ -30,10 +24,11 @@ namespace BDZarplata.Classes
                 sqlComand += Where;
                 Classes.DB.queryScalar(sqlComand);
             }
-            else MessageBox.Show("err UpdateTable \n Количество столбцов не совпадает с количеством значений");
+            else
+            {
+                MessageBox.Show("err UpdateTable \n Количество столбцов не совпадает с количеством значений");
+            }
         }
-
-
         /// <summary>
         /// Добавление значений указанной таблицы в БД
         /// </summary>
@@ -42,7 +37,7 @@ namespace BDZarplata.Classes
         /// <param name="ColumnsData">Массив значений этих столбцов</param>
         public static void InsertTable(string NameTable, List<string> ColumnsName, List<string> ColumnsData)
         {
-            
+
             string sqlComand = $"INSERT INTO {NameTable} ( {ColumnsName[0]}";
             if (ColumnsData.Count == ColumnsName.Count)
             {
@@ -59,8 +54,11 @@ namespace BDZarplata.Classes
                 DB.queryScalar(sqlComand);
 
             }
-            else MessageBox.Show("err InsertTable \n Количество столбцов не совпадает с количеством значений");
+            else
+            {
+                MessageBox.Show("err InsertTable \n Количество столбцов не совпадает с количеством значений");
+            }
         }
-   
+
     }
 }

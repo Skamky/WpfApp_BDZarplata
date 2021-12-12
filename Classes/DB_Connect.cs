@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data;
 using System.Data.SqlClient;
 using System.Windows;
-using System.IO;
 namespace BDZarplata.Classes
 {
-   public class DB_Connect
+    public class DB_Connect
     {
         public static string connectionString = "Data Source=localhost; Initial Catalog=BD_Zarplata; Integrated Security=true;";
         public static SqlConnection myConnection = new SqlConnection(connectionString);
@@ -16,13 +12,13 @@ namespace BDZarplata.Classes
         /// </summary>
         public static void OpenConnection()
         {
-            
+
             if (myConnection.State == System.Data.ConnectionState.Closed)
             {
                 myConnection.Open();
-             
+
             }
-                
+
         }
         /// <summary>
         /// закрытие соединения с БД
@@ -43,7 +39,7 @@ namespace BDZarplata.Classes
         /// <returns></returns>
         public static bool OpenClouseConnection(string DataSource = "localhost", string InitialCatalog = "BD_Zarplata", bool IntegratedSecurity = true)
         {
-            string connectStr = "Data Source="+DataSource+ "; Initial Catalog="+InitialCatalog+"; Integrated Security="+ IntegratedSecurity + ";";
+            string connectStr = "Data Source=" + DataSource + "; Initial Catalog=" + InitialCatalog + "; Integrated Security=" + IntegratedSecurity + ";";
             try
             {
                 SqlConnection userConnection = new SqlConnection(connectStr);
@@ -59,10 +55,11 @@ namespace BDZarplata.Classes
                     myConnection = userConnection;
                 }
                 return true;
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
-                MessageBox.Show("Произошла ошибка:\n" + ex.Message + "\n Проверьте корректность введенных данных\n"+ connectStr);
-                return false; 
+                MessageBox.Show("Произошла ошибка:\n" + ex.Message + "\n Проверьте корректность введенных данных\n" + connectStr);
+                return false;
             }
 
         }

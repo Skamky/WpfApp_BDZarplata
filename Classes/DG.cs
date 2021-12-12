@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace BDZarplata.Classes
@@ -30,9 +26,10 @@ namespace BDZarplata.Classes
                     result = (cellContent as TextBlock).Text;
                 }
                 return result;
-            }catch(Exception ex) { Manager.UpdateLabel("Ошибка в returnCell, возможно не выбрана ячейка для возврата \n" + ex.Message); return ""; }
+            }
+            catch (Exception ex) { Manager.UpdateLabel("Ошибка в returnCell, возможно не выбрана ячейка для возврата \n" + ex.Message); return ""; }
         }
-      
+
 
     }
 }
