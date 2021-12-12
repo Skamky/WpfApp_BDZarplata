@@ -1,18 +1,9 @@
-﻿using System;
+﻿using BDZarplata.Classes;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using BDZarplata.Classes;
 
 namespace BDZarplata.Pages
 {
@@ -106,10 +97,10 @@ namespace BDZarplata.Pages
                     break;
                 case 2:
                     break;
-                    case 3 :
+                case 3:
                     string Year = Classes.DG.GetSelectCell(DG_Base, 0);
-                    string Znach = Classes.DG.GetSelectCell(DG_Base,1);
-                    Manager.MainFrame.Navigate(new Pages.Page_Bughl_AddEdit_base(Year,Znach));
+                    string Znach = Classes.DG.GetSelectCell(DG_Base, 1);
+                    Manager.MainFrame.Navigate(new Pages.Page_Bughl_AddEdit_base(Year, Znach));
                     break;
                 default:
                     break;
@@ -124,14 +115,14 @@ namespace BDZarplata.Pages
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-         private void Btn_Delete_Click(object sender, RoutedEventArgs e)
+        private void Btn_Delete_Click(object sender, RoutedEventArgs e)
         {
             string YEAR = Classes.DG.GetSelectCell(DG_Base, 0);
-           
+
             if (YEAR == "")
             {
-                 MessageBox.Show("Объект для удаления не выбран. ", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
-              
+                MessageBox.Show("Объект для удаления не выбран. ", "Внимание!", MessageBoxButton.OK, MessageBoxImage.Warning);
+
             }
             else if (MessageBoxResult.Yes == MessageBox.Show("Вы собираетесь безвозвратно удалить запись\n Вы уверены?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Warning))
             {
@@ -144,7 +135,10 @@ namespace BDZarplata.Pages
                     MessageBox.Show("Операция успешна выполнена!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
                     DB.loadDataGrid(DG_Base, "SELECT *  FROM [BD_Zarplata].[bd_zarplta].[base]");
                 }
-                else MessageBox.Show("Произошла ошибка при удалении");
+                else
+                {
+                    MessageBox.Show("Произошла ошибка при удалении");
+                }
             }
         }
         private void intOnly_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -225,7 +219,11 @@ namespace BDZarplata.Pages
         {
             Btn_Add.Visibility = Visibility.Collapsed;
             Btn_delete.Visibility = Visibility.Collapsed;
-            if(Select0Items) Btn_Redactir.Visibility = Visibility.Collapsed;
+            if (Select0Items)
+            {
+                Btn_Redactir.Visibility = Visibility.Collapsed;
+            }
+
             Btn_Save.Visibility = Visibility.Collapsed;
         }
         /// <summary>
@@ -299,7 +297,7 @@ namespace BDZarplata.Pages
                 Calendar2.DisplayDate = DateTime.Now;
                 Calendar2.SelectedDate = DateTime.Now;
                 TB_Nadbav.Text = "";
-                TB_Vichet.Text="";
+                TB_Vichet.Text = "";
                 Btn_Red_Nadbav.IsEnabled = false;
                 Btn_Save.IsEnabled = false;
             }
@@ -320,24 +318,17 @@ namespace BDZarplata.Pages
         /// <param name="e"></param>
         private void Btn_Red_Nadbav_Click(object sender, RoutedEventArgs e)
         {
-            
-            
+
+
             Procedure.UpdateTable
                 (
                 "[BD_Zarplata].[bd_zarplta].[zp]"
                 , new List<string>() { "[Vichet]", "[Nadbav]" }
-                , new List<string>() {  TB_Vichet.Text , TB_Nadbav.Text }
+                , new List<string>() { TB_Vichet.Text, TB_Nadbav.Text }
                 , $"where[Sotrudnik_idSotrudnik] = {LB_Sotrud_id2.SelectedItem} AND [Data] = '{Calendar2.SelectedDate}'"
                 );
-                Classes.DB.loadDataGrid(DG_NadbavShtraf, $"SELECT  FORMAT([Data],'d'),[Nadbav]      ,[Vichet]        FROM [BD_Zarplata].[bd_zarplta].[zp]  Where [Sotrudnik_idSotrudnik]= {LB_Sotrud_id2.SelectedItem}");
-           
-           ; 
-          
-                MessageBox.Show("Изменения сохранены!");
-
-            
+            Classes.DB.loadDataGrid(DG_NadbavShtraf, $"SELECT  FORMAT([Data],'d'),[Nadbav]      ,[Vichet]        FROM [BD_Zarplata].[bd_zarplta].[zp]  Where [Sotrudnik_idSotrudnik]= {LB_Sotrud_id2.SelectedItem}");
+            MessageBox.Show("Изменения сохранены!");
         }
-
-     
     }
 }

@@ -1,17 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BDZarplata.Pages
 {
@@ -46,14 +37,14 @@ namespace BDZarplata.Pages
                 MessageBox.Show($"Оклад не может быть меньше МРОТ! ({mrot} руб) ");
                 return;
             }
-            if (Convert.ToDouble(TB_Travmat.Text)<0.2 || Convert.ToDouble(TB_Travmat.Text)>8.5)
+            if (Convert.ToDouble(TB_Travmat.Text) < 0.2 || Convert.ToDouble(TB_Travmat.Text) > 8.5)
             {
                 MessageBox.Show("Процент травматизма должен быть в пределах от 0.2 до 8.5");
                 return;
             }
 
-            List<string>columnname = new List<string>() { "[Oklad]", "[Travmat]" };
-             List<string> datacolumn = new List<string>() { TB_Oklad.Text, TB_Travmat.Text.Replace(',', '.') };
+            List<string> columnname = new List<string>() { "[Oklad]", "[Travmat]" };
+            List<string> datacolumn = new List<string>() { TB_Oklad.Text, TB_Travmat.Text.Replace(',', '.') };
             MessageBoxResult boxResult = MessageBox.Show("Сохранить изменения?", "Запрос на сохранение", MessageBoxButton.YesNo);
             if (boxResult == MessageBoxResult.Yes)
             {

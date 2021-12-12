@@ -17,8 +17,6 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-
-
         <Menu>
             <Button x:Name="Btn_Add" Cursor="Hand" Content="Добавить" Visibility="Collapsed" Click="Btn_Add_Click"/>
             <Button x:Name="Btn_Redactir" Cursor="Hand" Content="Изменить" Visibility="Collapsed" Click="Btn_Redactir_Click"/>
@@ -118,6 +116,5 @@
                 </DataGrid>
             </TabItem>
         </TabControl>
-
     </Grid>
 </Page>

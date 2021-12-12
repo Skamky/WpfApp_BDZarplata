@@ -1,17 +1,5 @@
-﻿                                                                                                                                                                                                                                         using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BDZarplata.Pages
 {
@@ -36,11 +24,11 @@ namespace BDZarplata.Pages
             {
                 Classes.Manager.UpdateLabel("Подключение прошло успешно");
 
-               object DostupLvl =
-                Classes.DB.queryScalar("SELECT  t2.AccessLvl " +
-                    "FROM[bd_zarplta].[sotrudnik] " +
-                    "t1 LEFT JOIN bd_zarplta.doljnost t2 ON t1.idDoljnost = t2.idDoljnost " +
-                    "where t1.idSotrudnik=" + TB_idSotrudnik.Text).ToString();
+                object DostupLvl =
+                 Classes.DB.queryScalar("SELECT  t2.AccessLvl " +
+                     "FROM[bd_zarplta].[sotrudnik] " +
+                     "t1 LEFT JOIN bd_zarplta.doljnost t2 ON t1.idDoljnost = t2.idDoljnost " +
+                     "where t1.idSotrudnik=" + TB_idSotrudnik.Text).ToString();
                 switch (DostupLvl)
                 {
                     case "0":
@@ -59,9 +47,12 @@ namespace BDZarplata.Pages
                         MessageBox.Show("Неизвестный уровень доступа " + DostupLvl);
                         break;
                 }
-                
+
             }
-            else Classes.Manager.UpdateLabel("Ошибка");
+            else
+            {
+                Classes.Manager.UpdateLabel("Ошибка");
+            }
         }
         /// <summary>
         /// Переключение поля для ввода адреса
@@ -88,7 +79,7 @@ namespace BDZarplata.Pages
         /// <param name="e"></param>
         private void CB_BD_NAmeDef_Click(object sender, RoutedEventArgs e)
         {
-            if (CB_BD_NAmeDef.IsChecked==true)
+            if (CB_BD_NAmeDef.IsChecked == true)
             {
                 TB_DBName.Text = "BD_Zarplata";
                 TB_DBName.IsEnabled = false;

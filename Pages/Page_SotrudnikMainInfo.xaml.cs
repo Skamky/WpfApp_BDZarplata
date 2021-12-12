@@ -1,18 +1,9 @@
-﻿using System;
+﻿using BDZarplata.Classes;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using BDZarplata.Classes;
 
 namespace BDZarplata.Pages
 {
@@ -52,7 +43,7 @@ namespace BDZarplata.Pages
         /// <param name="e"></param>
         private void Btn_Save_Click(object sender, RoutedEventArgs e)
         {
-          
+
         }
         /// <summary>
         /// Сопоставление ФИО и ID сотрудника
@@ -117,7 +108,7 @@ namespace BDZarplata.Pages
             }
         }
 
-        
+
         /// <summary>
         /// сохранение измененных полей таблицы БД
         /// </summary>
@@ -129,7 +120,7 @@ namespace BDZarplata.Pages
                 (
                 "[BD_Zarplata].[bd_zarplta].[graphik_rabot]"
                 , new List<string>() { "[StatusSotrud]", "[StatusDay]" }
-                , new List<string>() { "'"+CB_StatusSotrud.SelectedItem+"'", "'"+CB_StatusDay.SelectedItem+"'" }
+                , new List<string>() { "'" + CB_StatusSotrud.SelectedItem + "'", "'" + CB_StatusDay.SelectedItem + "'" }
                 , $"where[Sotrudnik_idSotrudnik] = {LB_Sotrud_id.SelectedItem} AND[DATE] = '{calendar_raspisan.SelectedDate}'"
                 );
             Classes.DB.loadDataGrid(DG_Raspisnie, $"SELECT FORMAT([DATE],'d') ,[StatusSotrud] ,[StatusDay] FROM [BD_Zarplata].[bd_zarplta].[graphik_rabot] where [Sotrudnik_idSotrudnik] = {LB_Sotrud_id.SelectedItem}");

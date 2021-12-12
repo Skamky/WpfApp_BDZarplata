@@ -1,17 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BDZarplata.Pages
 {
@@ -27,8 +18,14 @@ namespace BDZarplata.Pages
         string YEAR;
         public Page_Bughl_AddEdit_base(string year = "", string znach = "")
         {
-            if (year == "") AddMode = true;
-            else AddMode = false;
+            if (year == "")
+            {
+                AddMode = true;
+            }
+            else
+            {
+                AddMode = false;
+            }
 
             InitializeComponent();
             TB_Year.Text = year;
@@ -42,27 +39,27 @@ namespace BDZarplata.Pages
         /// <param name="e"></param>
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-            if(TB_Year.Text =="")
+            if (TB_Year.Text == "")
             {
                 MessageBox.Show("Поле год обязательно для заполнения!");
                 return;
             }
 
-            if(TB_Znach.Text=="")
+            if (TB_Znach.Text == "")
             {
                 MessageBox.Show("Поле значение обязательно для заполнения!");
                 return;
             }
-            List<string> columnNames = new List<string>(){"[Y]","[Z]"};
-            List<string> RowData = new List<string>() {TB_Year.Text,TB_Znach.Text };
+            List<string> columnNames = new List<string>() { "[Y]", "[Z]" };
+            List<string> RowData = new List<string>() { TB_Year.Text, TB_Znach.Text };
             if (AddMode)
             {
                 Classes.Procedure.InsertTable("[BD_Zarplata].[bd_zarplta].[base]", columnNames, RowData);
                 MessageBox.Show("Вставка новой записи завершена!");
             }
-            else 
+            else
             {
-                Classes.Procedure.UpdateTable("[BD_Zarplata].[bd_zarplta].[base]", columnNames, RowData,"WHERE [Y]= "+TB_Year.Text);
+                Classes.Procedure.UpdateTable("[BD_Zarplata].[bd_zarplta].[base]", columnNames, RowData, "WHERE [Y]= " + TB_Year.Text);
                 MessageBox.Show("Обновление записи успешно!");
 
             }
@@ -74,8 +71,14 @@ namespace BDZarplata.Pages
             if (YEAR == "")
             {
                 MR = MessageBox.Show("Объект для удаления не выбран. \n  хотите выбрать его сейчас?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                if (MR == MessageBoxResult.Yes) Classes.Manager.MainFrame.Navigate(new Page_BughalterInfo());
-                else return;
+                if (MR == MessageBoxResult.Yes)
+                {
+                    Classes.Manager.MainFrame.Navigate(new Page_BughalterInfo());
+                }
+                else
+                {
+                    return;
+                }
             }
             else if (MessageBoxResult.Yes == MessageBox.Show("Вы собираетесь безвозвратно удалить\n Вы уверены?", "Внимание!", MessageBoxButton.YesNo, MessageBoxImage.Warning))
             {
@@ -88,10 +91,13 @@ namespace BDZarplata.Pages
                     MessageBox.Show("Операция успешна выполнена!", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
                     Classes.Manager.MainFrame.Navigate(new Page_BughalterInfo());
                 }
-                else MessageBox.Show("Произошла ошибка при удалении");
+                else
+                {
+                    MessageBox.Show("Произошла ошибка при удалении");
+                }
             }
         }
-            private void intOnly_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void intOnly_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             //узнаем Кто вызвал событие 
             TextBox textBox = sender as TextBox;
